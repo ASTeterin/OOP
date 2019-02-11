@@ -35,7 +35,22 @@
     <Text Include="input.txt">
       <Filter>test_data</Filter>
     </Text>
-    <Text Include="18.txt">
+    <Text Include="7.txt">
+      <Filter>test_data</Filter>
+    </Text>
+    <Text Include="no_file.txt">
+      <Filter>test_data</Filter>
+    </Text>
+    <Text Include="empty_out.txt">
+      <Filter>test_data</Filter>
+    </Text>
+    <Text Include="no_param_out.txt">
+      <Filter>test_data</Filter>
+    </Text>
+    <Text Include="empty.txt">
+      <Filter>test_data</Filter>
+    </Text>
+    <Text Include="14_31.txt">
       <Filter>test_data</Filter>
     </Text>
   </ItemGroup>
