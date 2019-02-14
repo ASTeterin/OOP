@@ -12,20 +12,30 @@ fc %OUT% empty_out.txt
 %PROGRAM% "finish university" > %OUT%
 if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% no_param_out.txt
+if ERRORLEVEL 1 goto ERR
 
 %PROGRAM% %BAD_INPUT_FILE% "finish university" > %OUT%
 if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% bad_file_out.txt
+if ERRORLEVEL 1 goto ERR
 
-%PROGRAM% %INPUT_FILE%> %OUT%
+%PROGRAM% %INPUT_FILE% "" > %OUT%
+if NOT ERRORLEVEL 1 goto ERR
+fc %OUT% empty_string_out.txt
+if ERRORLEVEL 1 goto ERR
+
+%PROGRAM% %INPUT_FILE% > %OUT%
 if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% no_param_out.txt
+if ERRORLEVEL 1 goto ERR
 
 %PROGRAM% %INPUT_FILE% "finish university" > %OUT% || goto ERR
 fc %OUT% 7.txt
+if ERRORLEVEL 1 goto ERR
 
 %PROGRAM% %INPUT_FILE% "I learned to speak German" > %OUT% || goto ERR
 fc %OUT% 14_31.txt
+if ERRORLEVEL 1 goto ERR
 
 
 

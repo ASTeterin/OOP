@@ -1,1 +1,1 @@
-Cann't open file
+Can't open file

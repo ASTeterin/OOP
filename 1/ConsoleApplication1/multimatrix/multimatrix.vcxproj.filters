@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="test_data">
-      <UniqueIdentifier>{6b33e20a-3213-49c0-a83f-f5ac814c508b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -26,38 +23,8 @@
     <ClCompile Include="pch.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="findText.cpp">
+    <ClCompile Include="multimatrix.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="test.bat" />
-    <Text Include="input.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="7.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="no_file.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="empty_out.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="no_param_out.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="empty.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="14_31.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="bad_file_out.txt">
-      <Filter>test_data</Filter>
-    </Text>
-    <Text Include="empty_string_out.txt">
-      <Filter>test_data</Filter>
-    </Text>
   </ItemGroup>
 </Project>
