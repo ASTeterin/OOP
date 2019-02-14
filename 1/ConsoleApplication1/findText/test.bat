@@ -4,8 +4,8 @@ SET PROGRAM="%~1"
 SET INPUT_FILE="input.txt"
 SET BAD_INPUT_FILE="bad_input.txt"
 SET OUT="%TEMP%\out.txt"
-echo %OUT%
-echo %INPUT_FILE%
+::echo %OUT%
+::echo %INPUT_FILE%
 
 %PROGRAM% "empty.txt" "finish university" > %OUT% || goto ERR
 fc %OUT% empty_out.txt
