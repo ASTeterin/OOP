@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="14_31.txt" />
+    <Text Include="bad_file_out.txt" />
     <Text Include="empty.txt" />
     <Text Include="empty_out.txt" />
     <Text Include="no_param_out.txt" />

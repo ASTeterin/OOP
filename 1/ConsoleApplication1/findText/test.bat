@@ -14,6 +14,10 @@ fc %OUT% empty_out.txt
 if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% no_param_out.txt
 
+%PROGRAM% %BAD_INPUT_FILE% "finish university" > %OUT%
+if NOT ERRORLEVEL 1 goto ERR
+fc %OUT% bad_file_out.txt
+
 %PROGRAM% %INPUT_FILE%> %OUT%
 if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% no_param_out.txt

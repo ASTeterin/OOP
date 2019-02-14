@@ -53,5 +53,8 @@
     <Text Include="14_31.txt">
       <Filter>test_data</Filter>
     </Text>
+    <Text Include="bad_file_out.txt">
+      <Filter>test_data</Filter>
+    </Text>
   </ItemGroup>
 </Project>
