@@ -1,1 +1,1 @@
-Invalid arguments count
+Invalid arguments count. Use program call format multimatrix.exe <matrix file1> <matrix file2>
