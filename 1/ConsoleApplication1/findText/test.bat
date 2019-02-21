@@ -8,6 +8,7 @@ SET OUT="%TEMP%\out.txt"
 
 %PROGRAM% "empty.txt" "finish university" > %OUT% || goto ERR
 fc %OUT% empty_out.txt
+if ERRORLEVEL 1 goto ERR
 
 %PROGRAM% "finish university" > %OUT%
 if NOT ERRORLEVEL 1 goto ERR
@@ -19,9 +20,8 @@ if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% bad_file_out.txt
 if ERRORLEVEL 1 goto ERR
 
-%PROGRAM% %INPUT_FILE% "" > %OUT%
-if NOT ERRORLEVEL 1 goto ERR
-fc %OUT% empty_string_out.txt
+%PROGRAM% %INPUT_FILE% "" > %OUT% || goto ERR
+fc %OUT% empty_out.txt
 if ERRORLEVEL 1 goto ERR
 
 %PROGRAM% %INPUT_FILE% > %OUT%
