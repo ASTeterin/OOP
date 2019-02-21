@@ -1,1 +1,1 @@
-Invalid arguments count
+Invalid arguments count. Use the program call format bin2dec.cpp <number in binary system>

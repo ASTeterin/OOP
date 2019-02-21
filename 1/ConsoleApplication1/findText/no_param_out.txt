@@ -1,1 +1,1 @@
-Invalid arguments count
+Invalid arguments count. Use program call format findText.exe <file> <search string>
