@@ -178,6 +178,8 @@
     <None Include="test.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="bad_input_file1.txt" />
+    <Text Include="bad_input_file2.txt" />
     <Text Include="no_param_out.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

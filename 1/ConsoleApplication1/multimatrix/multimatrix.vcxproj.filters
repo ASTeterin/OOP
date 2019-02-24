@@ -37,5 +37,11 @@
     <Text Include="no_param_out.txt">
       <Filter>test_data</Filter>
     </Text>
+    <Text Include="bad_input_file1.txt">
+      <Filter>test_data</Filter>
+    </Text>
+    <Text Include="bad_input_file2.txt">
+      <Filter>test_data</Filter>
+    </Text>
   </ItemGroup>
 </Project>
