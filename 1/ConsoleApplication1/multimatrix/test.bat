@@ -19,6 +19,16 @@ if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% bad_input_file2.txt
 if ERRORLEVEL 1 goto ERR
 
+%PROGRAM% "invalid_format_matrix1.txt" "matrix2.txt" > %OUT%
+if NOT ERRORLEVEL 1 goto ERR
+fc %OUT% invalid_format.txt
+if ERRORLEVEL 1 goto ERR
+
+%PROGRAM% "matrix1.txt" "invalid_format_matrix1.txt" > %OUT%
+if NOT ERRORLEVEL 1 goto ERR
+fc %OUT% invalid_format.txt
+if ERRORLEVEL 1 goto ERR
+
 %PROGRAM% "matrix1.txt" "matrix2.txt" > %OUT% || goto ERR
 fc %OUT% resultMatrix.txt
 if ERRORLEVEL 1 goto ERR
