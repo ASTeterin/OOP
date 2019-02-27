@@ -1,0 +1,1 @@
+Wrong mode of the program. Use rle.exe pack <input file> <output file> or rle.exe unpack <input file> <output file>

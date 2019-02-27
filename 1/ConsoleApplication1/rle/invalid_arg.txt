@@ -1,0 +1,1 @@
+Invalid number of arguments. Use rle.exe pack <input file> <output file> or rle.exe unpack <input file> <output file>
