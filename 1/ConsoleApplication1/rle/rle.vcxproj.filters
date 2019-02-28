@@ -34,6 +34,9 @@
     <None Include="test.bat">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="test1_out.bin">
+      <Filter>test_data</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="invalid_arg.txt">
@@ -72,5 +75,10 @@
     <Text Include="test2_out.txt">
       <Filter>test_data</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="test1.png">
+      <Filter>test_data</Filter>
+    </Image>
   </ItemGroup>
 </Project>

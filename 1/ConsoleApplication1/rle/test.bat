@@ -19,23 +19,13 @@ if NOT ERRORLEVEL 1 goto ERR
 fc %OUT% no_input_file.txt
 if ERRORLEVEL 1 goto ERR
 
-%PROGRAM% "pack" test1.txt output.txt || goto ERR
-fc output.txt test1_out.txt
+%PROGRAM% "pack" test1.png output.txt || goto ERR
+fc output.txt test1_out.bin
 if ERRORLEVEL 1 goto ERR
 
-%PROGRAM% "unpack" unpack_test1.txt output.txt || goto ERR
-fc output.txt unpack_test1_out.txt
+%PROGRAM% "unpack" test1_out.bin output.png || goto ERR
+fc output.png test1.png
 if ERRORLEVEL 1 goto ERR
-
-%PROGRAM% "pack" test2.txt output.txt || goto ERR
-fc output.txt test2_out.txt
-if ERRORLEVEL 1 goto ERR
-
-%PROGRAM% "unpack" test2_out.txt output.txt || goto ERR
-fc output.txt test2.txt
-if ERRORLEVEL 1 goto ERR
-
-
 
 
 echo All tests passed

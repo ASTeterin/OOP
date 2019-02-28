@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="test.bat" />
+    <None Include="test1_out.bin" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="empty.txt" />
@@ -190,6 +191,9 @@
     <Text Include="unpack_test1.txt" />
     <Text Include="unpack_test1_out.txt" />
     <Text Include="wrong_mode.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="test1.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
