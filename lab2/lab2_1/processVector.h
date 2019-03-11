@@ -4,8 +4,8 @@
 #include <vector>
 
 
-bool ProcessVector(std::vector<float> &v);
-void PrintVector(std::vector<float> const& v);
-void ReadVector(std::vector<float> &v);
-float MinElementVector(std::vector<float> const& v);
-void Sort(std::vector<float> &v);
+bool ProcessVector(std::vector<double> &v);
+void PrintVector(std::vector<double> const& v);
+void ReadVector(std::vector<double> &v);
+double MinElementVector(std::vector<double> const& v);
+void Sort(std::vector<double> &v);

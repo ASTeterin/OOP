@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void ReadVector(vector<float> &v)
+void ReadVector(vector<double> &v)
 {
 	float element;
 	while (cin >> element)
@@ -12,24 +12,24 @@ void ReadVector(vector<float> &v)
 	}
 }
 
-void PrintVector(vector<float> const& v)
+void PrintVector(vector<double> const& v)
 {
-	copy(v.begin(), v.end(), ostream_iterator<float>(cout, " "));
+	copy(v.begin(), v.end(), ostream_iterator<double>(cout, " "));
 }
 
-float MinElementVector(vector<float> const& v)
+double MinElementVector(vector<double> const& v)
 {
-	float min = NULL;
-	if (v.size() == 0)
+	double min = NULL;
+	if (v.empty())
 	{
 		return min;
 	}
 	return *min_element(v.begin(), v.end());
 }
 
-bool ProcessVector(vector<float> &v)
+bool ProcessVector(vector<double> &v)
 {
-	float min = MinElementVector(v);
+	double min = MinElementVector(v);
 	if (!min)
 	{
 		return false;
@@ -38,10 +38,10 @@ bool ProcessVector(vector<float> &v)
 	{
 		v[i] *= min;
 	}
-	return 0;
+	return true;
 }
 
-void Sort(vector<float> &v)
+void Sort(vector<double> &v)
 {
 	sort(v.begin(), v.end());
 }
