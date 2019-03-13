@@ -3,13 +3,18 @@
 
 using namespace std;
 
-void ReadVector(vector<double> &v)
+bool ReadVector(istream &inputStream, vector<double> &v)
 {
 	float element;
-	while (cin >> element)
+	while (inputStream >> element)
 	{
 		v.push_back(element);
 	}
+	if (v.empty())
+	{
+		return false;
+	}
+	return true;
 }
 
 void PrintVector(vector<double> const& v)
@@ -19,26 +24,27 @@ void PrintVector(vector<double> const& v)
 
 double MinElementVector(vector<double> const& v)
 {
-	double min = NULL;
 	if (v.empty())
 	{
-		return min;
+		return NULL;
 	}
-	return *min_element(v.begin(), v.end());
+	else
+	{
+		return *min_element(v.begin(), v.end());
+	}
 }
 
-bool ProcessVector(vector<double> &v)
+void ProcessVector(vector<double> &v)
 {
 	double min = MinElementVector(v);
 	if (!min)
 	{
-		return false;
+		return;
 	}
 	for (size_t i = 0; i < v.size(); i++)
 	{
 		v[i] *= min;
 	}
-	return true;
 }
 
 void Sort(vector<double> &v)

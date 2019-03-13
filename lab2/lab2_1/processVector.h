@@ -4,8 +4,8 @@
 #include <vector>
 
 
-bool ProcessVector(std::vector<double> &v);
+void ProcessVector(std::vector<double> &v);
 void PrintVector(std::vector<double> const& v);
-void ReadVector(std::vector<double> &v);
+bool ReadVector(std::istream &inputStream, std::vector<double> &v);
 double MinElementVector(std::vector<double> const& v);
 void Sort(std::vector<double> &v);

@@ -1,1 +1,1 @@
-Failed to open matrix file2
+Failed to open matrix
