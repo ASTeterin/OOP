@@ -22,28 +22,17 @@ void PrintVector(vector<double> const& v)
 	copy(v.begin(), v.end(), ostream_iterator<double>(cout, " "));
 }
 
-double MinElementVector(vector<double> const& v)
-{
-	if (v.empty())
-	{
-		return NULL;
-	}
-	else
-	{
-		return *min_element(v.begin(), v.end());
-	}
-}
 
 void ProcessVector(vector<double> &v)
 {
-	double min = MinElementVector(v);
-	if (!min)
+	if (v.size() == 0)
 	{
 		return;
 	}
-	for (size_t i = 0; i < v.size(); i++)
+	double min = *min_element(v.begin(), v.end());
+	for (auto& item : v)
 	{
-		v[i] *= min;
+		item *= min;
 	}
 }
 

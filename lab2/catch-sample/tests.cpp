@@ -2,7 +2,7 @@
 #include "lab2_1/processVector.h"
 using namespace std;
 
-TEST_CASE("Empty vector") 
+TEST_CASE("Function takes an empty vector and returns an empty vector") 
 {
 	vector<double> in = {};
 	vector<double> out = {};
@@ -10,7 +10,7 @@ TEST_CASE("Empty vector")
 	CHECK(in == out);
 }
 
-TEST_CASE("1 element")
+TEST_CASE("Function takes 1 element and return 1 element multiplied by itself")
 {
 	vector<double> in = {-1};
 	vector<double> out = {1};
@@ -18,18 +18,11 @@ TEST_CASE("1 element")
 	CHECK(in == out);
 }
 
-TEST_CASE("3 element")
-{
-	vector<double> in = { 4, -1.5, 12 };
-	vector<double> out = { -6, 2.25, -18};
-	ProcessVector(in);
-	CHECK(in == out);
-}
 
-TEST_CASE("2 equal minimum element")
+TEST_CASE("Function takes an array with zero and returns an array of zeros")
 {
-	vector<double> in = { 4, -1.5, 12, -1.5 };
-	vector<double> out = { -6, 2.25, -18, 2.25 };
+	vector<double> in = { 4, 0, 12 };
+	vector<double> out = { 0, 0, 0 };
 	ProcessVector(in);
 	CHECK(in == out);
 }
