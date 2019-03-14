@@ -6,4 +6,4 @@
 //using namespace std;
 
 std::string HtmlEncode(std::string const& encodingString);
-std::string GetHtmlCode(char ch);
+std::string HtmlEncodeChar(const char ch);

@@ -14,7 +14,8 @@ void ProcessHtmlDocument(istream &input, ostream &output)
 	}
 }
 
-void main()
+int main()
 {
 	ProcessHtmlDocument(cin, cout);
+	return 0;
 }
