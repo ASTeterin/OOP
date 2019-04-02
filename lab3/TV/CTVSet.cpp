@@ -1,7 +1,6 @@
 
 #include "pch.h"
 #include "CTVSet.h"
-#include <algorithm>
 
 CTVSet::CTVSet()
 {
@@ -35,6 +34,23 @@ int CTVSet::GetChannel()const
 {
 	return m_isOn ? m_selectedChannel : 0;
 }
+
+string CTVSet::GetChannelName(int channel)const
+{
+	if (!m_isOn)
+	{
+		return "";
+	}
+	for (channelInfo currChannel : m_channelInfo)
+	{
+		if (currChannel.first == channel)
+		{
+			return currChannel.second;
+		}
+	}
+	return "";
+}
+
 
 bool CTVSet::SelectChannel(int channel)
 {
