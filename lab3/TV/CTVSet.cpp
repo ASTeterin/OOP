@@ -74,6 +74,24 @@ bool CTVSet::SetChannelName(int channel, string name)
 	return false;
 }
 
+bool CTVSet::DeleteChannelName(string name)
+{
+	if ((name == "") || !m_isOn)
+	{
+		return false;
+	}
+	for (auto currChannel = m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
+	{
+		if (currChannel->second == name)
+		{
+			currChannel->second = "";
+			return true;
+		}
+	}
+	return false;
+
+}
+
 bool CTVSet::SelectChannel(int channel)
 {
 	bool isAvailableChannel = (channel >= 1) && (channel <= 99);

@@ -20,6 +20,7 @@ public:
 	bool SelectPreviousChannel();
 	bool SetChannelName(int channel, string name);
 	string GetChannelName(int channel)const;
+	bool DeleteChannelName(string name);
 private:
 
 	
