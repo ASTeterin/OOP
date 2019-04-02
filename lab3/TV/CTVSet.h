@@ -4,6 +4,9 @@ using namespace std;
 
 typedef pair <int, string> channelInfo;
 
+const int FIRST_CHANNEL = 1;
+const int END_CHANNEL = 99;
+
 class CTVSet
 {
 public:
@@ -15,7 +18,7 @@ public:
 	int GetChannel()const;
 	bool SelectChannel(int channel);
 	bool SelectPreviousChannel();
-	//bool SetChannelName(int channel, string name);
+	bool SetChannelName(int channel, string name);
 	string GetChannelName(int channel)const;
 private:
 
