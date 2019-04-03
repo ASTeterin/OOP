@@ -19,6 +19,7 @@ CTVSet::~CTVSet()
 }
 
 
+
 bool CTVSet::IsTurnedOn()const
 {
 	return m_isOn;
@@ -115,13 +116,33 @@ bool CTVSet::DeleteChannelName(string name)
 
 bool CTVSet::SelectChannel(int channel)
 {
-	bool isAvailableChannel = (channel >= 1) && (channel <= 99);
+	bool isAvailableChannel = (channel >= FIRST_CHANNEL) && (channel <= END_CHANNEL);
 	if (isAvailableChannel && m_isOn)
 	{
 		m_previousChannel = m_selectedChannel;
 		m_selectedChannel = channel;
 		return true;
 	}
+	return false;
+}
+
+bool CTVSet::SelectChannel(string name)
+{
+	if ((!m_isOn) || (name == ""))
+	{
+		return false;
+	}
+
+	for (auto currChannel = m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
+	{
+		if (currChannel->second == name)
+		{
+			m_previousChannel = m_selectedChannel;
+			m_selectedChannel = currChannel->first;
+			return true;
+		}
+	}
+		
 	return false;
 }
 
@@ -134,4 +155,6 @@ bool CTVSet::SelectPreviousChannel()
 	}
 	return false;
 }
+
+
 
