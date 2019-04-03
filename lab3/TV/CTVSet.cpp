@@ -55,6 +55,22 @@ string CTVSet::GetChannelName(int channel)const
 	return "";
 }
 
+int CTVSet::GetChannelByName(string name)const
+{
+	if (!m_isOn)
+	{
+		return 0;
+	}
+	for (channelInfo currChannel : m_channelInfo)
+	{
+		if (currChannel.second == name)
+		{
+			return currChannel.first;
+		}
+	}
+	return 0;
+}
+
 
 bool CTVSet::SetChannelName(int channel, string name)
 {
@@ -62,6 +78,10 @@ bool CTVSet::SetChannelName(int channel, string name)
 	if (!isAvailableChannel || !m_isOn)
 	{
 		return false;
+	}
+	if (CTVSet::GetChannelByName(name) != 0)
+	{
+		CTVSet::DeleteChannelName(name);
 	}
 	for (auto currChannel= m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
 	{
@@ -73,6 +93,7 @@ bool CTVSet::SetChannelName(int channel, string name)
 	}
 	return false;
 }
+
 
 bool CTVSet::DeleteChannelName(string name)
 {
