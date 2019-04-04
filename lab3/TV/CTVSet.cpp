@@ -56,7 +56,7 @@ string CTVSet::GetChannelName(int channel)const
 	return "";
 }
 
-int CTVSet::GetChannelByName(string name)const
+int CTVSet::GetChannelByName(string const& name)const
 {
 	if (!m_isOn)
 	{
@@ -73,7 +73,7 @@ int CTVSet::GetChannelByName(string name)const
 }
 
 
-bool CTVSet::SetChannelName(int channel, string name)
+bool CTVSet::SetChannelName(int channel, string const& name)
 {
 	bool isAvailableChannel = (channel >= 1) && (channel <= 99);
 	if (!isAvailableChannel || !m_isOn)
@@ -96,7 +96,7 @@ bool CTVSet::SetChannelName(int channel, string name)
 }
 
 
-bool CTVSet::DeleteChannelName(string name)
+bool CTVSet::DeleteChannelName(string const& name)
 {
 	if ((name == "") || !m_isOn)
 	{
@@ -126,7 +126,7 @@ bool CTVSet::SelectChannel(int channel)
 	return false;
 }
 
-bool CTVSet::SelectChannel(string name)
+bool CTVSet::SelectChannel(string const& name)
 {
 	if ((!m_isOn) || (name == ""))
 	{
