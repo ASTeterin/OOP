@@ -23,6 +23,7 @@ public:
 	string GetChannelName(int channel)const;
 	int GetChannelByName(string const& name)const;
 	bool DeleteChannelName(string const& name);
+	vector<pair<int, string>> GetChannelList()const;
 
 private:
 	bool m_isOn;

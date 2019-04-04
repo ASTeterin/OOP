@@ -19,7 +19,6 @@ CTVSet::~CTVSet()
 }
 
 
-
 bool CTVSet::IsTurnedOn()const
 {
 	return m_isOn;
@@ -70,6 +69,11 @@ int CTVSet::GetChannelByName(string const& name)const
 		}
 	}
 	return 0;
+}
+
+vector<pair<int, string>> CTVSet::GetChannelList()const
+{
+	return m_channelInfo;
 }
 
 

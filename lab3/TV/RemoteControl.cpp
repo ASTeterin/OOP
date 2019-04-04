@@ -60,8 +60,18 @@ bool CRemoteControl::Info(std::istream & args)
 	string info = (m_tv.IsTurnedOn())
 		? ("TV is turned on\nChannel is: " + to_string(m_tv.GetChannel()) + "\n")
 		: "TV is turned off\n";
-
 	m_output << info;
+	
+	for (auto channelInfo : m_tv.GetChannelList())
+	{
+		if (channelInfo.second != "")
+		{
+			cout << channelInfo.first << " - " << channelInfo.second << "\n";
+		}
+	}
+
+
+
 	return true;
 }
 
