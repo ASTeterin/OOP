@@ -2,7 +2,15 @@
 
 using namespace std;
 
-typedef pair <int, string> channelInfo;
+struct channelInfo
+{
+	int channel;
+	string channelName;
+};
+//typedef pair <int, string> channelInfo;
+//typedef boost::bimap<int, string> channelInfo;
+
+
 
 const int FIRST_CHANNEL = 1;
 const int END_CHANNEL = 99;
@@ -23,12 +31,14 @@ public:
 	string GetChannelName(int channel)const;
 	int GetChannelByName(string const& name)const;
 	bool DeleteChannelName(string const& name);
-	vector<pair<int, string>> GetChannelList()const;
+	vector <channelInfo> GetChannelList()const;
+	
 
 private:
 	bool m_isOn;
 	int m_selectedChannel;
 	int m_previousChannel;
 	vector<channelInfo> m_channelInfo;
+	int RequiredChannel(string const& name, vector<channelInfo> const& channelInfo);
 };
 

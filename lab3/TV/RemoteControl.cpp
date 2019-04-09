@@ -18,7 +18,8 @@ CRemoteControl::CRemoteControl(CTVSet & tv, std::istream & input, std::ostream &
 		{ "Info", bind(&CRemoteControl::Info, this, _1) },
 		{ "SelectChannel", bind(&CRemoteControl::SelectChannel, this, _1) },
 		{ "SelectPreviousChannel", bind(&CRemoteControl::SelectPreviousChannel, this, _1) },
-		{ "SetChannelName", bind(&CRemoteControl::SetChannelName, this, _1) },		
+		{ "SetChannelName", bind(&CRemoteControl::SetChannelName, this, _1) },
+		{ "DeleteChannelName", bind(&CRemoteControl::DeleteChannelName, this, _1) },
 	})
 {
 }
@@ -64,14 +65,11 @@ bool CRemoteControl::Info(std::istream & args)
 	
 	for (auto channelInfo : m_tv.GetChannelList())
 	{
-		if (channelInfo.second != "")
+		if (channelInfo.channelName != "")
 		{
-			cout << channelInfo.first << " - " << channelInfo.second << "\n";
+			cout << channelInfo.channel << " - " << channelInfo.channelName << "\n";
 		}
 	}
-
-
-
 	return true;
 }
 
@@ -83,8 +81,9 @@ bool CRemoteControl::SelectChannel(std::istream & args)
 	getline(args, param);
 	notParsedChannel = regex_replace(param, std::regex("^[ ]*(.*?)[ ]*$"), "$1");
 	int channel = atoi(notParsedChannel.c_str());
+	bool isParsAllString = (notParsedChannel.length() == to_string(channel).length());
 	
-	if (channel == 0)
+	if ((channel == 0) || (!isParsAllString))
 	{
 		if (m_tv.SelectChannel(notParsedChannel))
 		{
@@ -115,6 +114,13 @@ bool CRemoteControl::SelectPreviousChannel(std::istream & args)
 		return true;
 	}
 	return false;
+}
+
+bool CRemoteControl::DeleteChannelName(std::istream & args)
+{
+	string notParsedChannelName;
+	getline(args, notParsedChannelName);
+	return true;
 }
 
 bool CRemoteControl::SetChannelName(std::istream & args)

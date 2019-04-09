@@ -7,9 +7,13 @@ CTVSet::CTVSet()
 	m_isOn = false;
 	m_selectedChannel = FIRST_CHANNEL;
 	m_previousChannel = FIRST_CHANNEL;
+	channelInfo currentChannel;
 	for (int i = FIRST_CHANNEL; i <= END_CHANNEL; i++)
 	{
-		m_channelInfo.push_back(make_pair(i, ""));
+		
+		currentChannel.channel = i;
+		currentChannel.channelName = "";
+		m_channelInfo.push_back(currentChannel);
 	}
 }
 
@@ -47,9 +51,9 @@ string CTVSet::GetChannelName(int channel)const
 	}
 	for (channelInfo currChannel : m_channelInfo)
 	{
-		if (currChannel.first == channel)
+		if (currChannel.channel == channel)
 		{
-			return currChannel.second;
+			return currChannel.channelName;
 		}
 	}
 	return "";
@@ -63,15 +67,15 @@ int CTVSet::GetChannelByName(string const& name)const
 	}
 	for (channelInfo currChannel : m_channelInfo)
 	{
-		if (currChannel.second == name)
+		if (currChannel.channelName == name)
 		{
-			return currChannel.first;
+			return currChannel.channel;
 		}
 	}
 	return 0;
 }
 
-vector<pair<int, string>> CTVSet::GetChannelList()const
+vector <channelInfo> CTVSet::GetChannelList()const
 {
 	return m_channelInfo;
 }
@@ -84,18 +88,12 @@ bool CTVSet::SetChannelName(int channel, string const& name)
 	{
 		return false;
 	}
-	if (CTVSet::GetChannelByName(name) != 0)
+	if (GetChannelByName(name) != 0)
 	{
-		CTVSet::DeleteChannelName(name);
+		DeleteChannelName(name);
 	}
-	for (auto currChannel= m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
-	{
-		if (currChannel->first == channel)
-		{
-			currChannel->second = name;
-			return true;
-		}
-	}
+
+	m_channelInfo[channel - 1].channelName = name;
 	return false;
 }
 
@@ -106,13 +104,19 @@ bool CTVSet::DeleteChannelName(string const& name)
 	{
 		return false;
 	}
-	for (auto currChannel = m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
+	/*for (auto currChannel = m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
 	{
-		if (currChannel->second == name)
+		if (currChannel->channelName == name)
 		{
-			currChannel->second = "";
+			currChannel->channelName = "";
 			return true;
 		}
+	}*/
+
+	if (int channel = RequiredChannel(name, m_channelInfo) != 0)
+	{
+		SetChannelName(channel, "");
+		return true;
 	}
 	return false;
 
@@ -137,17 +141,25 @@ bool CTVSet::SelectChannel(string const& name)
 		return false;
 	}
 
-	for (auto currChannel = m_channelInfo.begin(); currChannel != m_channelInfo.end(); currChannel++)
+	if (int currChannel = RequiredChannel(name, m_channelInfo) != 0)
 	{
-		if (currChannel->second == name)
+		m_previousChannel = m_selectedChannel;
+		m_selectedChannel = currChannel;
+		return true;
+	}		
+	return false;
+}
+
+int CTVSet::RequiredChannel(string const& name, vector<channelInfo> const& channelInfo)
+{
+	for (auto currChannel = channelInfo.begin(); currChannel != channelInfo.end(); currChannel++)
+	{
+		if (currChannel->channelName == name)
 		{
-			m_previousChannel = m_selectedChannel;
-			m_selectedChannel = currChannel->first;
-			return true;
+			return currChannel->channel;
 		}
 	}
-		
-	return false;
+	return 0;
 }
 
 bool CTVSet::SelectPreviousChannel()
