@@ -94,7 +94,7 @@ bool CTVSet::SetChannelName(int channel, string const& name)
 	}
 
 	m_channelInfo[channel - 1].channelName = name;
-	return false;
+	return true;
 }
 
 
