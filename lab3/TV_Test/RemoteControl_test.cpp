@@ -34,54 +34,47 @@ SCENARIO("remote control of channel switching")
 	stringstream input;
 	ostringstream output;
 	CRemoteControl rc(tv, input, output);
-	GIVEN("")
+	GIVEN("TV is turned Off")
 	{
-		WHEN("TV is turned Off")
+		WHEN("the SelectChannel is specified")
 		{
 			REQUIRE(!tv.IsTurnedOn());
 			input << "SelectChannel 2";
-			THEN("user enter SelectChannel command")
+			THEN("TV status does not change")
 			{
 				CHECK(!rc.HandleCommand());
-				THEN("TV status does not change")
-				{
-					ExpectOperationFailure(tv, [](CTVSet& tv) { return tv.SelectChannel(50); });
-					THEN("it is notified that TV is turned off")
-					{
-						CHECK(output.str() == "TV is turned off\n");
-					}
-				}
+				ExpectOperationFailure(tv, [](CTVSet& tv) { return tv.SelectChannel(50); });
+				CHECK(output.str() == "TV is turned off\n");
 			}
 		}
-		AND_WHEN("TV is Turn On")
-		{
-			tv.TurnOn();
-			REQUIRE(tv.IsTurnedOn());
+	}
+	GIVEN("TV is Turn On")
+	{
+		tv.TurnOn();
+		REQUIRE(tv.IsTurnedOn());
 			
-			THEN("user enter SelectChannel command")
+		WHEN("user enter SelectChannel command")
+		{
+			input << "SelectChannel 2";
+			CHECK(rc.HandleCommand());
+			THEN("TV switched to another channel")
 			{
-				input << "SelectChannel 2";
-				CHECK(rc.HandleCommand());
-				THEN("TV switched to another channel")
-				{
-					ExpectOperationSuccess(tv, [](CTVSet& tv) { return tv.SelectChannel(2); }, 2);
-					THEN("it is notified that TV is turned off")
-					{
-						CHECK(output.str() == "TV switched on 2 channel.\n");
-					}
-				}
-			}
-			AND_THEN("user enter SelectChannel by name")
-			{
-				REQUIRE(tv.SetChannelName(3, "NTV"));
-				input << "SelectChannel NTV";
-				CHECK(rc.HandleCommand());
-				THEN("TV switched to another channel")
-				{
-					CHECK(output.str() == "TV switched on NTV channel.\n");
-				}
+				ExpectOperationSuccess(tv, [](CTVSet& tv) { return tv.SelectChannel(2); }, 2);
+				CHECK(output.str() == "TV switched on 2 channel.\n");
 			}
 		}
+		AND_WHEN("user enter SelectChannel by name")
+		{
+			REQUIRE(tv.SetChannelName(1, "ORT"));
+			input << "SelectChannel ORT";
+			CHECK(rc.HandleCommand());
+			THEN("TV switched to another channel")
+			{
+				ExpectOperationSuccess(tv, [](CTVSet& tv) { return tv.SelectChannel("ORT"); }, 1);
+				CHECK(output.str() == "TV switched on ORT channel.\n");
+			}
+		}
+		
 	}
 }
 
@@ -166,3 +159,49 @@ SCENARIO("The remote control deletes the channel name")
 		}
 	}
 }
+
+SCENARIO("Remote control provides information about TV", "[remote]")
+{
+	CTVSet tv;
+	std::stringstream input;
+	std::ostringstream output;
+	input << "Info";
+	CRemoteControl rc(tv, input, output);
+	GIVEN("A turned off TV")
+	{
+		REQUIRE(!tv.IsTurnedOn());
+		WHEN("user enter Info command")
+		{
+			rc.HandleCommand();
+			THEN("it is notified that TV is off")
+			{
+				CHECK(output.str() == "TV is turned off\n");
+			}
+		}
+	}
+	GIVEN("A turned on TV")
+	{
+		tv.TurnOn();
+		REQUIRE(tv.IsTurnedOn());
+		WHEN("the user enters the command when channel names are not specified ")
+		{
+			tv.SelectChannel(10);
+			CHECK(rc.HandleCommand());
+			THEN("it is notified that TV is on the current channel")
+			{
+				CHECK(output.str() == "TV is turned on\nChannel is: 10\n");
+			}
+		}
+		AND_WHEN("the user enters the command when some channel names are specified ")
+		{
+			REQUIRE(tv.SetChannelName(1, "ORT"));
+			REQUIRE(tv.SetChannelName(2, "Russia"));
+			CHECK(rc.HandleCommand());
+			THEN("it is notified that TV is on the current channel")
+			{
+				CHECK(output.str() == "TV is turned on\nChannel is: 1\n1 - ORT\n2 - Russia\n");
+			}
+		}
+	}
+}
+

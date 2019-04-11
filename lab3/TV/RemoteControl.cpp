@@ -95,6 +95,7 @@ bool CRemoteControl::SelectChannel(std::istream & args)
 
 	if (!isValidChannel(channel, FIRST_CHANNEL, END_CHANNEL))
 	{
+		m_output << "Invalid channel specified.\n";
 		return false;
 	}
 
@@ -114,6 +115,7 @@ bool CRemoteControl::SelectPreviousChannel(std::istream & args)
 		m_output << "TV switched on " << m_tv.GetChannel() << " channel.\n";
 		return true;
 	}
+	m_output << "TV is turned off\n";
 	return false;
 }
 
@@ -159,6 +161,7 @@ bool CRemoteControl::SetChannelName(std::istream & args)
 
 	if (!isValidChannel(channel, FIRST_CHANNEL, END_CHANNEL))
 	{
+		m_output << "Invalid channel specified.\n";
 		return false;
 	}
 	if (m_tv.SetChannelName(channel, channelName))
