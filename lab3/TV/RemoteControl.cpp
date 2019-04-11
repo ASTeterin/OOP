@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "RemoteControl.h"
 #include "CTVSet.h"
+#include <sstream>
 #include <regex>
 
 using namespace std;
@@ -67,7 +68,7 @@ bool CRemoteControl::Info(std::istream & args)
 	{
 		if (channelInfo.channelName != "")
 		{
-			cout << channelInfo.channel << " - " << channelInfo.channelName << "\n";
+			m_output << channelInfo.channel << " - " << channelInfo.channelName << "\n";
 		}
 	}
 	return true;
@@ -87,7 +88,7 @@ bool CRemoteControl::SelectChannel(std::istream & args)
 	{
 		if (m_tv.SelectChannel(notParsedChannel))
 		{
-			cout << "TV switched on " << notParsedChannel	 << " channel.\n";
+			m_output << "TV switched on " << notParsedChannel	 << " channel.\n";
 			return true;
 		}
 	}
@@ -99,10 +100,10 @@ bool CRemoteControl::SelectChannel(std::istream & args)
 
 	if (m_tv.SelectChannel(channel))
 	{
-		cout << "TV switched on " << channel << " channel.\n";
+		m_output << "TV switched on " << channel << " channel.\n";
 		return true;
 	}
-	cout << "TV is turned off\n";
+	m_output << "TV is turned off\n";
 	return false;
 }
 
@@ -110,7 +111,7 @@ bool CRemoteControl::SelectPreviousChannel(std::istream & args)
 {
 	if (m_tv.SelectPreviousChannel())
 	{
-		cout << "TV switched on " << m_tv.GetChannel() << " channel.\n";
+		m_output << "TV switched on " << m_tv.GetChannel() << " channel.\n";
 		return true;
 	}
 	return false;
@@ -118,9 +119,24 @@ bool CRemoteControl::SelectPreviousChannel(std::istream & args)
 
 bool CRemoteControl::DeleteChannelName(std::istream & args)
 {
+	string channelName;
 	string notParsedChannelName;
 	getline(args, notParsedChannelName);
-	return true;
+	channelName = regex_replace(notParsedChannelName, std::regex("^[ ]*(.*?)[ ]*$"), "$1");
+	if (!m_tv.IsTurnedOn())
+	{
+		m_output << "TV is turned off\n";
+		return false;
+	}
+
+	if (m_tv.DeleteChannelName(channelName))
+	{
+		m_output << "Channel " << channelName << " was deleted\n";
+		return true;
+	}
+
+	m_output << "Error deleting channel\n";
+	return false;
 }
 
 bool CRemoteControl::SetChannelName(std::istream & args)
@@ -137,7 +153,7 @@ bool CRemoteControl::SetChannelName(std::istream & args)
 
 	if (channel == 0)
 	{
-		cout << "channel number " << notParsedChannelNumber << " is not a number. ";
+		m_output << "channel number " << notParsedChannelNumber << " is not a number. ";
 		return false;
 	}
 
@@ -147,9 +163,10 @@ bool CRemoteControl::SetChannelName(std::istream & args)
 	}
 	if (m_tv.SetChannelName(channel, channelName))
 	{
-		cout << "For channel " << channel << " set up the name " << channelName << "\n";
+		m_output << "For channel " << channel << " set up the name " << channelName << "\n";
 		return true;
 	}
+	m_output << "TV is turned off\n";
 	return false;
 }
 
@@ -158,7 +175,7 @@ bool CRemoteControl::isValidChannel(int channel, int firstChannel, int lastChann
 {
 	if ((channel < firstChannel) || (channel > lastChannel))
 	{
-		cout << "Invalid channel number. ";
+		m_output << "Invalid channel number. ";
 		return false;
 	}
 	return true;
