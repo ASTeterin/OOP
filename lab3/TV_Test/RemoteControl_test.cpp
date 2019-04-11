@@ -43,7 +43,6 @@ SCENARIO("remote control of channel switching")
 			THEN("TV status does not change")
 			{
 				CHECK(!rc.HandleCommand());
-				ExpectOperationFailure(tv, [](CTVSet& tv) { return tv.SelectChannel(50); });
 				CHECK(output.str() == "TV is turned off\n");
 			}
 		}
@@ -59,7 +58,6 @@ SCENARIO("remote control of channel switching")
 			CHECK(rc.HandleCommand());
 			THEN("TV switched to another channel")
 			{
-				ExpectOperationSuccess(tv, [](CTVSet& tv) { return tv.SelectChannel(2); }, 2);
 				CHECK(output.str() == "TV switched on 2 channel.\n");
 			}
 		}
@@ -70,7 +68,6 @@ SCENARIO("remote control of channel switching")
 			CHECK(rc.HandleCommand());
 			THEN("TV switched to another channel")
 			{
-				ExpectOperationSuccess(tv, [](CTVSet& tv) { return tv.SelectChannel("ORT"); }, 1);
 				CHECK(output.str() == "TV switched on ORT channel.\n");
 			}
 		}

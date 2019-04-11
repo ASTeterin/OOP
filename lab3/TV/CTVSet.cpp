@@ -104,12 +104,13 @@ bool CTVSet::DeleteChannelName(string const& name)
 	{
 		return false;
 	}
-	if (int channel = RequiredChannel(name, m_channelInfo) != 0)
+	if (int channel = ChannelNumberByName(name, m_channelInfo) != 0)
 	{
 		SetChannelName(channel, "");
 		return true;
 	}
 	return false;
+
 }
 
 bool CTVSet::SelectChannel(int channel)
@@ -131,7 +132,7 @@ bool CTVSet::SelectChannel(string const& name)
 		return false;
 	}
 
-	if (int currChannel = RequiredChannel(name, m_channelInfo) != 0)
+	if (int currChannel = ChannelNumberByName(name, m_channelInfo) != 0)
 	{
 		m_previousChannel = m_selectedChannel;
 		m_selectedChannel = currChannel;
@@ -140,7 +141,7 @@ bool CTVSet::SelectChannel(string const& name)
 	return false;
 }	
 
-int CTVSet::RequiredChannel(string const& name, vector<channelInfo> const& channelInfo)
+int CTVSet::ChannelNumberByName(string const& name, vector<channelInfo> const& channelInfo)
 {
 	for (auto currChannel = channelInfo.begin(); currChannel != channelInfo.end(); currChannel++)
 	{

@@ -7,7 +7,7 @@ struct channelInfo
 	int channel;
 	string channelName;
 };
-//typedef pair <int, string> channelInfo;
+
 //typedef boost::bimap<int, string> channelInfo;
 
 
@@ -56,6 +56,6 @@ private:
 
 	vector<channelInfo> m_channelInfo;
 
-	int RequiredChannel(string const& name, vector<channelInfo> const& channelInfo);
+	int ChannelNumberByName(string const& name, vector<channelInfo> const& channelInfo);
 };
 
