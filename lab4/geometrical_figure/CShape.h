@@ -4,6 +4,7 @@
 class CShape: public IShape
 {
 public:
+	CShape();
 	CShape(std::string const& type, uint32_t outlineColor);
 	uint32_t GetOutlineColor() const override;
 	std::string ToString() const override;
