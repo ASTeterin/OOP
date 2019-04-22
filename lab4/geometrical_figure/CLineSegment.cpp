@@ -2,11 +2,3 @@
 #include "CLineSegment.h"
 
 
-CLineSegment::CLineSegment()
-{
-}
-
-
-CLineSegment::~CLineSegment()
-{
-}

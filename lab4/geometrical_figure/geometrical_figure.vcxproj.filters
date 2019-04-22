@@ -24,10 +24,13 @@
     <ClInclude Include="IShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CLineSegment.h">
+    <ClInclude Include="CShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CShape.h">
+    <ClInclude Include="ISolidShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CSolidShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,10 +47,10 @@
     <ClCompile Include="IShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CLineSegment.cpp">
+    <ClCompile Include="CShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CShape.cpp">
+    <ClCompile Include="CSolidShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
