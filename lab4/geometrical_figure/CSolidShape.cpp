@@ -30,7 +30,7 @@ void CSolidShape::SetOutlineColor(uint32_t color)
 
 uint32_t CSolidShape::GetOutlineColor() const
 {
-	return CShape::GetOutlineColor();
+	return m_outlineColor;
 }
 
 string CSolidShape::ToString() const

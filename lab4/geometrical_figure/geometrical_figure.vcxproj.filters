@@ -47,9 +47,6 @@
     <ClCompile Include="geometrical_figure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IShape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

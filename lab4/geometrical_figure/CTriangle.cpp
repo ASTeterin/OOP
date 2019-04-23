@@ -14,7 +14,7 @@ CTriangle::CTriangle(CPoint const& vertex1, CPoint const& vertex2, CPoint const&
 
 double CTriangle::GetSide(CPoint const& vertex1, CPoint const& vertex2) const
 {
-	return sqrt(pow((vertex1.x - vertex2.x), 2) + pow((vertex1.x - vertex2.y), 2));
+	return sqrt(pow((vertex1.x - vertex2.x), 2) + pow((vertex1.y - vertex2.y), 2));
 }
 
 void CTriangle::AppendProperty(std::ostream& strm) const
