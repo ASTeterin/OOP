@@ -12,8 +12,10 @@ public:
 
 	std::string ToString() const;
 
-private:
 	virtual void AppendProperty(std::ostream& strm) const;
+
+private:
+	
 	uint32_t m_outlineColor;
 	std::string m_type;
 };

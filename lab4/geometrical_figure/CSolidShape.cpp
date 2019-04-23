@@ -38,15 +38,6 @@ uint32_t CSolidShape::GetOutlineColor() const
 
 string CSolidShape::ToString() const
 {
-	/*ostringstream strm;
-	strm << fixed << setprecision(2);
-	strm << m_type << ":" << endl
-		 << "\tarea = " << GetArea() << endl
-		 << "\tperimeter = " << GetPerimeter() << endl
-		 << "\toutline color = #" << GetOutlineColor() << endl;
-		 //<< "\tfill color = #" << GetFillColor() << endl;
-	AppendProperty(strm);
-	return strm.str();*/
 	return CShape::ToString();
 }
 

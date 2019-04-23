@@ -6,8 +6,6 @@
 class ISolidShape: public IShape
 {
 public:
-	ISolidShape() = default;
-	virtual ~ISolidShape() = default;
 	virtual double GetArea() const = 0;
 	virtual double GetPerimeter() const = 0;
 

@@ -19,9 +19,9 @@ double CTriangle::GetSide(CPoint const& vertex1, CPoint const& vertex2) const
 
 void CTriangle::AppendProperty(std::ostream& strm) const
 {
-	strm << "Vertex1 (" << m_vertex1.x << ", " << m_vertex1.y << ")\n"
-		 << "Vertex2 (" << m_vertex2.x << ", " << m_vertex2.y << ")\n"
-		 << "Vertex3 (" << m_vertex3.x << ", " << m_vertex3.y << ")\n";
+	strm << "\tVertex1 (" << m_vertex1.x << ", " << m_vertex1.y << ")\n"
+		 << "\tVertex2 (" << m_vertex2.x << ", " << m_vertex2.y << ")\n"
+		 << "\tVertex3 (" << m_vertex3.x << ", " << m_vertex3.y << ")\n";
 	return;
 }
 

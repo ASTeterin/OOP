@@ -21,7 +21,7 @@ public:
 	std::uint32_t GetOutlineColor() const final;
 
 	std::string ToString() const;
-	void AppendProperty(std::ostream& strm) const;
+	void AppendProperty(std::ostream& strm) const override;
 
 private:
 	std::string m_type;
