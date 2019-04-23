@@ -36,6 +36,7 @@ SCENARIO("Rectangle")
 			{
 				CHECK(rectangle.GetArea() == 131.25);
 			}
+			//AND_THEN
 		}
 	}
 }
