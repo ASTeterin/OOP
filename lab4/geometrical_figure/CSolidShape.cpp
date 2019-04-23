@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "IShape.h"
-#include "CShape.h"
 #include "CSolidShape.h"
+#include "CShape.h"
+#include "IShape.h"
 
 
 using namespace std;
@@ -35,17 +35,20 @@ uint32_t CSolidShape::GetOutlineColor() const
 
 string CSolidShape::ToString() const
 {
-	ostringstream strm;
+	/*ostringstream strm;
 	strm << fixed << setprecision(2);
 	strm << m_type << ":" << endl
-		 << "\tarea = " << CShape::GetArea() << endl
-		 << "\tperimeter = " << CShape::GetPerimeter() << endl
-		 << "\toutline color = #" << GetOutlineColor() << endl
-		 << "\tfill color = #" << GetFillColor() << endl;
-	AppendProperties(strm);
-	return strm.str();
+		 << "\tarea = " << GetArea() << endl
+		 << "\tperimeter = " << GetPerimeter() << endl
+		 << "\toutline color = #" << GetOutlineColor() << endl;
+		 //<< "\tfill color = #" << GetFillColor() << endl;
+	AppendProperty(strm);
+	return strm.str();*/
+	return CShape::ToString();
 }
 
 
-
-
+void CSolidShape::AppendProperty(std::ostream& strm) const
+{
+	strm << "\tfill color = #" << CSolidShape::GetFillColor() << endl;
+}

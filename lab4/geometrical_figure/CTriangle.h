@@ -2,7 +2,7 @@
 #include "CPoint.h"
 #include "CSolidShape.h"
 
-class CTriangle: public CSolidShape
+class CTriangle final: public CSolidShape
 {
 public:
 	CTriangle(CPoint const& vertex1, CPoint const& vertex2, CPoint const& vertex3, uint32_t outlineColor, uint32_t fillColor);

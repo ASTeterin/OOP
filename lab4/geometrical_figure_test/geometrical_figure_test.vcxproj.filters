@@ -21,6 +21,12 @@
     <ClInclude Include="..\geometrical_figure\CShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\geometrical_figure\CTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\geometrical_figure\CPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +36,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="catch_sample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="triangle_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
