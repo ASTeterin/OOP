@@ -12,7 +12,7 @@ class CSolidShape
 public:
 
 	CSolidShape(const std::string& type, uint32_t outlineColor, uint32_t fillColor);
-	//virtual ~CSolidShape() = default;
+	virtual ~CSolidShape() = default;
 
 	void SetFillColor(uint32_t color) override;
 	uint32_t GetFillColor() const override; //final;

@@ -3,7 +3,7 @@
 #include "stdint.h"
 
 
-class ISolidShape: virtual public IShape
+class ISolidShape: public IShape
 {
 public:
 	ISolidShape() = default;
