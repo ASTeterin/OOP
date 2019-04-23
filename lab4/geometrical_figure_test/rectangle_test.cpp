@@ -9,6 +9,7 @@ SCENARIO("Rectangle")
 		CPoint rightBottomPoint = { 12.5, 0.0 };
 		uint32_t outlineColor = 0xFF0000;
 		uint32_t fillColor = 0x00FF00;
+		std::string info = "Rectangle:\n\tarea = 131.25 1  \n\tperimeter = 46.00 1 \n\toutline color = ff0000 \n\tLeftTop(0.00, 10.50) \n\tRightBottom(12.50, 0.00)";
 		WHEN("construct a rectangle")
 		{
 			CRectangle rectangle(leftTopPoint, rightBottomPoint, outlineColor, fillColor);
@@ -36,7 +37,10 @@ SCENARIO("Rectangle")
 			{
 				CHECK(rectangle.GetArea() == 131.25);
 			}
-			//AND_THEN
+			AND_THEN("")
+			{
+				CHECK(rectangle.ToString() == info);
+			}
 		}
 	}
 }
