@@ -1,7 +1,7 @@
 #pragma once
 #include "IShape.h"
 
-class CShape: virtual public IShape
+class CShape: public virtual IShape
 {
 public:
 	CShape();
@@ -12,10 +12,10 @@ public:
 
 	std::string ToString() const;
 
-	virtual void AppendProperty(std::ostream& strm) const;
+	
 
 private:
-	
+	virtual void AppendProperty(std::ostream& strm) const;
 	uint32_t m_outlineColor;
 	std::string m_type;
 };

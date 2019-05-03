@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CCircle.h" />
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
     <ClInclude Include="CShape.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CCircle.cpp" />
     <ClCompile Include="CRectangle.cpp" />
     <ClCompile Include="CShape.cpp" />
     <ClCompile Include="CSolidShape.cpp" />
