@@ -1,6 +1,6 @@
-#define _USE_MATH_DEFINES
 #include "pch.h"
 #include "CCircle.h"
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 
@@ -15,12 +15,12 @@ CCircle::CCircle(CPoint const& center, double const& radius, uint32_t outlineCol
 
 double CCircle::GetArea() const
 {
-	return (3.14 * pow(m_radius, 2));
+	return (M_PI * pow(m_radius, 2));
 }
 
 double CCircle::GetPerimeter() const
 {
-	return (2 * 3.14 * m_radius);
+	return (2 * M_PI *  m_radius);
 }
 
 CPoint CCircle::GetCenter() const
