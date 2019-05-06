@@ -26,6 +26,9 @@ SCENARIO("Circle")
 				CHECK(circle.GetFillColor() == fillColor);
 				CHECK(IsEqual(circle.GetArea(), 15.2053084434) == true);
 				CHECK(IsEqual(circle.GetPerimeter(), 13.8230076758) == true);
+				CHECK(circle.GetRadius() == radius);
+				CHECK(circle.GetCenter().x == centre.x);
+				CHECK(circle.GetCenter().y == centre.y);
 				CHECK(circle.ToString() == info);
 			}
 		}
