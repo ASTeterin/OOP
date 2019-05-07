@@ -5,9 +5,6 @@
 
 using namespace std;
 
-CShape::CShape()
-{}
-
 CShape::CShape(string const& type, uint32_t outlineColor)
 	: m_type(type), m_outlineColor(outlineColor)
 {
