@@ -10,9 +10,7 @@ public:
 	uint32_t GetOutlineColor() const override;
 	void SetOutlineColor(uint32_t color);
 
-	std::string ToString() const;
-
-	
+	std::string ToString() const;	
 
 private:
 	virtual void AppendProperty(std::ostream& strm) const;

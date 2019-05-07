@@ -142,14 +142,14 @@ void CShapeProcessor::AddLineSegment(vector<string> const& shapeParametrs)
 	m_shapesList.push_back(lineSegment);
 }
 
-/*void CShapeProcessor::PrintShapeWithMaxArea()
+void CShapeProcessor::PrintShapeWithMaxArea() const
 {
 	if (m_shapesList.empty())
 	{
 		return;
 	}
 	double maxArea = (*m_shapesList[0]).GetArea();
-	shared_ptr<CShape> shapeWithMaxArea = m_shapesList[0];
+	shared_ptr<IShape>  shapeWithMaxArea = m_shapesList[0];
 	for (const auto shape : m_shapesList)
 	{
 		if ((*shape).GetArea() > maxArea)
@@ -157,4 +157,24 @@ void CShapeProcessor::AddLineSegment(vector<string> const& shapeParametrs)
 			shapeWithMaxArea = shape;
 		}
 	}
-}*/
+	m_output << "Shape with max area\n" << (*shapeWithMaxArea).ToString() << "\n";
+}
+
+void CShapeProcessor::PrintShapeWithMinPerimeter() const
+{
+	if (m_shapesList.empty())
+	{
+		return;
+	}
+	double minPerimeter = (*m_shapesList[0]).GetPerimeter();
+	shared_ptr<IShape> shapeWithMinPerimeter = m_shapesList[0];
+	for (const auto shape : m_shapesList)
+	{
+		if ((*shape).GetArea() > minPerimeter)
+		{
+			shapeWithMinPerimeter = shape;
+		}
+	}
+	m_output << "Shape with min perimeter\n"
+			 << (*shapeWithMinPerimeter).ToString() << "\n";
+}

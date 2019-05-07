@@ -12,12 +12,14 @@ public:
 	CShapeProcessor(std::istream& input, std::ostream& output);
 	void HandleCommand();
 	void PrintInfo() const;
+	void PrintShapeWithMaxArea() const;
+	void PrintShapeWithMinPerimeter() const;
+
 private:
 	void AddCircle(std::vector<std::string> const& shapeParametrs);
 	void AddTriangle(std::vector<std::string> const& shapeParametrs);
 	void AddRectangle(std::vector<std::string> const& shapeParametrs);
 	void AddLineSegment(std::vector<std::string> const& shapeParametrs);
-	void PrintShapeWithMaxArea();
 	std::vector<std::string> ReadShape(std::istream& strm);
 
 private:
