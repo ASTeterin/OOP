@@ -11,7 +11,6 @@
 using namespace std;
 using namespace std::placeholders;
 
-
 CShapeProcessor::CShapeProcessor(istream& input, ostream& output)
 	: m_input(input)
 	, m_output(output)
@@ -34,75 +33,128 @@ vector<string> CShapeProcessor::ReadShape(istream& strm)
 	return shapeParametrs;
 }
 
-void CShapeProcessor::AddTriangle(vector<string> const& parametersList)
+void CShapeProcessor::HandleCommand()
 {
-	//CheckTriangleArguments(parametersList);
+	string commandLine; // = "Circle 0 0 10 0x001000 0xEE0022";
+	string actions;
+	vector<string> params;
+	getline(m_input, commandLine);
+	if (commandLine.empty())
+	{
+		return;
+	}
+	istringstream strm(commandLine);
+	params = ReadShape(strm);
+	auto it = m_actionMap.find(params[0]); //
+	if (it != m_actionMap.end())
+	{
+		it->second(params);
+	}
+}
 
-	CPoint vertex1 = { stod(parametersList[1]), stod(parametersList[2]) };
-	CPoint vertex2 = { stod(parametersList[3]), stod(parametersList[4]) };
-	CPoint vertex3 = { stod(parametersList[5]), stod(parametersList[6]) };
+void CShapeProcessor::PrintInfo() const
+{
+	for (const auto shape : m_shapesList)
+	{
+		m_output << shape->ToString() << endl;
+	}
+}
+
+void CShapeProcessor::AddTriangle(vector<string> const& shapeParametrs)
+{
+	if ((shapeParametrs.size() != 7 && shapeParametrs.size() != 9))
+	{
+		throw invalid_argument("Incorrect count of arguments! Use: Triangle vertex1.x vertex1.y vertex2.x vertex2.y vertex3.x vertex.3y {outline fill}\n");
+	}
+
+	CPoint vertex1 = { stod(shapeParametrs[1]), stod(shapeParametrs[2]) };
+	CPoint vertex2 = { stod(shapeParametrs[3]), stod(shapeParametrs[4]) };
+	CPoint vertex3 = { stod(shapeParametrs[5]), stod(shapeParametrs[6]) };
 	uint32_t outlineColor = 0x000000;
 	uint32_t fillColor = 0xFFFFFF;
 
-	if (parametersList.size() == 9)
+	if (shapeParametrs.size() == 9)
 	{
-		outlineColor = stoul(parametersList[7], nullptr, 16);
-		fillColor = stoul(parametersList[8], nullptr, 16);
+		outlineColor = stoul(shapeParametrs[7], nullptr, 16);
+		fillColor = stoul(shapeParametrs[8], nullptr, 16);
 	}
 	auto triangle = make_shared<CTriangle>(vertex1, vertex2, vertex3, outlineColor, fillColor);
 	m_shapesList.push_back(triangle);
 }
 
-void CShapeProcessor::AddRectangle(vector<string> const& parametersList)
+void CShapeProcessor::AddRectangle(vector<string> const& shapeParametrs)
 {
-	//CheckRectangleArguments(parametersList);
+	if ((shapeParametrs.size() != 5 && shapeParametrs.size() != 7))
+	{
+		throw invalid_argument("Incorrect amount arguments! Use:  Rectangle leftTop.x leftTop.y rightBottom.x rightBottom.y {outline fill}\n");
+	}
 
-	CPoint leftTop = { stod(parametersList[1]), stod(parametersList[2]) };
-	CPoint rightBottom = { stod(parametersList[3]), stod(parametersList[4]) };
+	CPoint leftTop = { stod(shapeParametrs[1]), stod(shapeParametrs[2]) };
+	CPoint rightBottom = { stod(shapeParametrs[3]), stod(shapeParametrs[4]) };
 	uint32_t outlineColor = 0x000000;
 	uint32_t fillColor = 0xFFFFFF;
 
-	if (parametersList.size() == 7)
+	if (shapeParametrs.size() == 7)
 	{
-		outlineColor = stoul(parametersList[5], nullptr, 16);
-		fillColor = stoul(parametersList[6], nullptr, 16);
+		outlineColor = stoul(shapeParametrs[5], nullptr, 16);
+		fillColor = stoul(shapeParametrs[6], nullptr, 16);
 	}
 	auto rectangle = make_shared<CRectangle>(leftTop, rightBottom, outlineColor, fillColor);
 	m_shapesList.push_back(rectangle);
 }
 
-void CShapeProcessor::AddCircle(vector<string> const& parametersList)
+void CShapeProcessor::AddCircle(vector<string> const& shapeParametrs)
 {
-	if ((parametersList.size() != 4 && parametersList.size() != 6))
+	if ((shapeParametrs.size() != 4 && shapeParametrs.size() != 6))
 	{
-		throw invalid_argument("Incorrect amount arguments! Must will be 4 or 6!");
+		throw invalid_argument("Incorrect amount arguments! Use: Circle center.x center.y radius { outline fill }\n");
 	}
-	CPoint center = { stod(parametersList[1]), stod(parametersList[2]) };
-	double radius = stod(parametersList[3]);
+	CPoint center = { stod(shapeParametrs[1]), stod(shapeParametrs[2]) };
+	double radius = stod(shapeParametrs[3]);
 	uint32_t outlineColor = 0x000000;
 	uint32_t fillColor = 0xFFFFFF;
 
-	if (parametersList.size() == 6)
+	if (shapeParametrs.size() == 6)
 	{
-		outlineColor = stoul(parametersList[4], nullptr, 16);
-		fillColor = stoul(parametersList[5], nullptr, 16);
+		outlineColor = stoul(shapeParametrs[4], nullptr, 16);
+		fillColor = stoul(shapeParametrs[5], nullptr, 16);
 	}
 	auto circle = make_shared<CCircle>(center, radius, outlineColor, fillColor);
 	m_shapesList.push_back(circle);
 }
 
-void CShapeProcessor::AddLineSegment(vector<string> const& parametersList)
+void CShapeProcessor::AddLineSegment(vector<string> const& shapeParametrs)
 {
-	//CheckLineSegmentArguments(parametersList);
+	if ((shapeParametrs.size() != 5 && shapeParametrs.size() != 6))
+	{
+		throw invalid_argument("Incorrect amount arguments! Use: LineSegment vertex1.x vertex1.y vertex2.x vertex2.y {outline}\n");
+	}
 
-	CPoint startPoint = { stod(parametersList[1]), stod(parametersList[2]) };
-	CPoint endPoint = { stod(parametersList[3]), stod(parametersList[4]) };
+	CPoint startPoint = { stod(shapeParametrs[1]), stod(shapeParametrs[2]) };
+	CPoint endPoint = { stod(shapeParametrs[3]), stod(shapeParametrs[4]) };
 	uint32_t outlineColor = 0x000000;
 
-	if (parametersList.size() == 6)
+	if (shapeParametrs.size() == 6)
 	{
-		outlineColor = stoul(parametersList[5], nullptr, 16);
+		outlineColor = stoul(shapeParametrs[5], nullptr, 16);
 	}
 	auto lineSegment = make_shared<CLineSegment>(startPoint, endPoint, outlineColor);
 	m_shapesList.push_back(lineSegment);
 }
+
+/*void CShapeProcessor::PrintShapeWithMaxArea()
+{
+	if (m_shapesList.empty())
+	{
+		return;
+	}
+	double maxArea = (*m_shapesList[0]).GetArea();
+	shared_ptr<CShape> shapeWithMaxArea = m_shapesList[0];
+	for (const auto shape : m_shapesList)
+	{
+		if ((*shape).GetArea() > maxArea)
+		{
+			shapeWithMaxArea = shape;
+		}
+	}
+}*/
