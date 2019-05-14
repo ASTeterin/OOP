@@ -28,6 +28,11 @@ public:
 	CVector3D const operator *(double scalar) const;
 	CVector3D const operator /(double scalar) const;
 
+	CVector3D& operator*=(double scalar);
+	CVector3D& operator /=(double scalar);
+
+
+
 
 	// Другие методы и операции класса
 
