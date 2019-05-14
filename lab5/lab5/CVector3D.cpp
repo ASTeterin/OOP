@@ -28,3 +28,34 @@ CVector3D CVector3D::operator-() const
 {
 	return CVector3D(-x, -y, -z);
 }
+
+CVector3D CVector3D::operator+() const
+{
+	return CVector3D(x, y, z);
+}
+
+CVector3D const CVector3D::operator+(CVector3D const& operand2) const
+{
+	return CVector3D(x + operand2.x, y + operand2.y, z + operand2.z);
+}
+
+CVector3D const CVector3D::operator-(CVector3D const& operand2) const
+{
+	return CVector3D(x - operand2.x, y - operand2.y, z - operand2.z);
+}
+
+CVector3D CVector3D::operator +=(CVector3D const& operand2)
+{
+	x += operand2.x;
+	y += operand2.y;
+	z += operand2.z;
+	return *this;
+}
+
+CVector3D CVector3D::operator -=(CVector3D const& operand2)
+{
+	x -= operand2.x;
+	y -= operand2.y;
+	z -= operand2.z;
+	return *this;
+}

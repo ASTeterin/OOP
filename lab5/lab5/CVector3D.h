@@ -16,8 +16,12 @@ public:
 	// Ќормализует вектор (приводит его к единичной длине)
 	void Normalize();
 
-	CVector3D operator-() const;
-	CVector3D operator+() const;
+	CVector3D operator -() const;
+	CVector3D operator +() const;
+	CVector3D const operator +(CVector3D const& operand2) const;
+	CVector3D const operator -(CVector3D const& operand2) const;
+	CVector3D operator +=(CVector3D const& operand2);
+	CVector3D operator -=(CVector3D const& operand2);
 
 	// ƒругие методы и операции класса
 
