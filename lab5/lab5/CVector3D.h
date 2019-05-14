@@ -18,10 +18,16 @@ public:
 
 	CVector3D operator -() const;
 	CVector3D operator +() const;
+
 	CVector3D const operator +(CVector3D const& operand2) const;
 	CVector3D const operator -(CVector3D const& operand2) const;
+
 	CVector3D operator +=(CVector3D const& operand2);
 	CVector3D operator -=(CVector3D const& operand2);
+
+	CVector3D const operator *(double scalar) const;
+	CVector3D const operator /(double scalar) const;
+
 
 	// Другие методы и операции класса
 

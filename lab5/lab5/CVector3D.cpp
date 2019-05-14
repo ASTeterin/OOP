@@ -59,3 +59,24 @@ CVector3D CVector3D::operator -=(CVector3D const& operand2)
 	z -= operand2.z;
 	return *this;
 }
+
+CVector3D const CVector3D::operator *(double scalar) const
+{
+	return CVector3D(x * scalar, y * scalar, z * scalar);
+}
+
+CVector3D const operator*(double scalar, CVector3D const& vector)
+{
+	return vector * scalar;
+}
+
+CVector3D const CVector3D::operator /(double scalar) const
+{
+	if (scalar == 0)
+	{
+		throw "scalar cannot be 0";
+	}
+	return CVector3D(x / scalar, y / scalar, z / scalar);
+}
+
+
