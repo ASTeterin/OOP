@@ -18,7 +18,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CVector3D.h">
+    <ClInclude Include="..\lab5\CVector3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,10 +26,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lab5.cpp">
+    <ClCompile Include="Vector3D_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CVector3D.cpp">
+    <ClCompile Include="catch_sample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lab5\CVector3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
