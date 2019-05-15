@@ -39,3 +39,6 @@ public:
 	// ¬ данном случае данные можно сделать публичными
 	double x, y, z;
 };
+
+CVector3D const operator*(double scalar, CVector3D const& vector);
+
