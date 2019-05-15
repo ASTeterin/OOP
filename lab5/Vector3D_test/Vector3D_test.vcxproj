@@ -168,10 +168,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\lab5\CVector3D.h" />
+    <ClInclude Include="..\lab5\math_function.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lab5\CVector3D.cpp" />
+    <ClCompile Include="..\lab5\math_function.cpp" />
     <ClCompile Include="catch_sample.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

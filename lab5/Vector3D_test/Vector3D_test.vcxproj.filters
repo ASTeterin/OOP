@@ -21,6 +21,9 @@
     <ClInclude Include="..\lab5\CVector3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\lab5\math_function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -33,6 +36,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\lab5\CVector3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lab5\math_function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
