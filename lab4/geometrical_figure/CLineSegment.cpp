@@ -1,12 +1,13 @@
 #include "pch.h"
 #include "CLineSegment.h"
+#include "CPoint.h"
 
 using namespace std;
 
 CLineSegment::CLineSegment(CPoint const& startPont, CPoint const& endPoint, uint32_t outlineColor)
-	: m_startPoint(startPont)
+	: CShape("LineSegment", outlineColor)
+	, m_startPoint(startPont)
 	, m_endPoint(endPoint)
-	, CShape("LineSegment", outlineColor)
 {
 }
 
@@ -29,7 +30,7 @@ double CLineSegment::GetPerimeter() const
 {
 	CPoint startPoint = GetStartPoint();
 	CPoint endPoint = GetEndPoint();
-	return hypot(startPoint.x - endPoint.x, startPoint.y - endPoint.y);
+	return GetDistance(m_startPoint, m_endPoint);
 }
 
 void CLineSegment::AppendProperty(ostream& strm) const
@@ -37,6 +38,3 @@ void CLineSegment::AppendProperty(ostream& strm) const
 	strm << fixed << setprecision(2) << "\tstart point(" << m_startPoint.x << ", " << m_startPoint.y << ")" << endl
 		 << "\tend point(" << m_endPoint.x << ", " << m_endPoint.y << ")" << endl;
 }
-
-
-

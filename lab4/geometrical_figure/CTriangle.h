@@ -18,6 +18,5 @@ private:
 	CPoint m_vertex1;
 	CPoint m_vertex2;
 	CPoint m_vertex3;
-	double GetSide(CPoint const& vertex1, CPoint const& vertex2) const;
 	void AppendProperty(std::ostream& strm) const;
 };

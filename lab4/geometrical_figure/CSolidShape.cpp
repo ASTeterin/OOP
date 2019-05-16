@@ -7,9 +7,6 @@
 using namespace std;
 
 CSolidShape::CSolidShape(const string& type, uint32_t outlineColor, uint32_t fillColor)
-	/*: m_type(type)
-	, m_outlineColor(outlineColor)
-	, m_fillColor(fillColor)*/
 	: CShape::CShape(type, outlineColor), 
 	m_fillColor(fillColor)
 {
@@ -32,7 +29,6 @@ void CSolidShape::SetOutlineColor(uint32_t color)
 
 uint32_t CSolidShape::GetOutlineColor() const
 {
-	//return m_outlineColor;
 	return CShape::GetOutlineColor();
 }
 

@@ -5,17 +5,28 @@
 
 
 CTriangle::CTriangle(CPoint const& vertex1, CPoint const& vertex2, CPoint const& vertex3, uint32_t outlineColor, uint32_t fillColor)
-	: m_vertex1(vertex1)
+	: CSolidShape("Triangle", outlineColor, fillColor)
+	, m_vertex1(vertex1)
 	, m_vertex2(vertex2)
 	, m_vertex3(vertex3)
-	, CSolidShape("Triangle", outlineColor, fillColor)
 {
 }
 
-double CTriangle::GetSide(CPoint const& vertex1, CPoint const& vertex2) const
+CPoint CTriangle::GetVertex1() const
 {
-	return sqrt(pow((vertex1.x - vertex2.x), 2) + pow((vertex1.y - vertex2.y), 2));
+	return m_vertex1;
 }
+
+CPoint CTriangle::GetVertex2() const
+{
+	return m_vertex2;
+}
+
+CPoint CTriangle::GetVertex3() const
+{
+	return m_vertex3;
+}
+
 
 void CTriangle::AppendProperty(std::ostream& strm) const
 {
@@ -27,14 +38,14 @@ void CTriangle::AppendProperty(std::ostream& strm) const
 
 double CTriangle::GetPerimeter() const
 {
-	return GetSide(m_vertex1, m_vertex2) + GetSide(m_vertex2, m_vertex3) + GetSide(m_vertex1, m_vertex3);
+	return GetDistance(m_vertex1, m_vertex2) + GetDistance(m_vertex2, m_vertex3) + GetDistance(m_vertex1, m_vertex3);
 }
 
 double CTriangle::GetArea() const
 {
-	double side1 = GetSide(m_vertex1, m_vertex2);
-	double side2 = GetSide(m_vertex2, m_vertex3);
-	double side3 = GetSide(m_vertex1, m_vertex3);
+	double side1 = GetDistance(m_vertex1, m_vertex2);
+	double side2 = GetDistance(m_vertex2, m_vertex3);
+	double side3 = GetDistance(m_vertex1, m_vertex3);
 	double halfPerimetr = (side1 + side2 + side3) / 2;
 	return sqrt(halfPerimetr * (halfPerimetr - side1) * (halfPerimetr - side2) * (halfPerimetr - side3));
 }

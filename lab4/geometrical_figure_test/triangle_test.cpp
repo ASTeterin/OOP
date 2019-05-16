@@ -17,6 +17,9 @@ SCENARIO("Triangle")
 			CTriangle triangle(vertex1, vertex2, vertex3, outlineColor, fillColor);
 			THEN("a triangle has the following parametry")
 			{
+				CHECK(triangle.GetVertex1() == vertex1);
+				CHECK(triangle.GetVertex2() == vertex2);
+				CHECK(triangle.GetVertex3() == vertex3);
 				CHECK(triangle.GetOutlineColor() == outlineColor);
 				CHECK(triangle.GetFillColor() == fillColor);
 				CHECK(triangle.GetArea() == 6.0);

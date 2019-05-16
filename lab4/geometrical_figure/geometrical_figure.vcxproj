@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CCircle.cpp" />
+    <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CShapeProcessor.cpp" />
     <ClCompile Include="CLineSegment.cpp" />
     <ClCompile Include="CRectangle.cpp" />

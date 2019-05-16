@@ -181,6 +181,7 @@
   <ItemGroup>
     <ClCompile Include="..\geometrical_figure\CCircle.cpp" />
     <ClCompile Include="..\geometrical_figure\CLineSegment.cpp" />
+    <ClCompile Include="..\geometrical_figure\CPoint.cpp" />
     <ClCompile Include="..\geometrical_figure\CRectangle.cpp" />
     <ClCompile Include="..\geometrical_figure\CShape.cpp" />
     <ClCompile Include="..\geometrical_figure\CSolidShape.cpp" />

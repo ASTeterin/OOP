@@ -83,5 +83,8 @@
     <ClCompile Include="..\geometrical_figure\CLineSegment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\geometrical_figure\CPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

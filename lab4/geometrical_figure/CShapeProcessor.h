@@ -20,7 +20,7 @@ private:
 	void AddTriangle(std::vector<std::string> const& shapeParametrs);
 	void AddRectangle(std::vector<std::string> const& shapeParametrs);
 	void AddLineSegment(std::vector<std::string> const& shapeParametrs);
-	std::vector<std::string> ReadShape(std::istream& strm);
+	std::vector<std::string> ParseShapeParameterString(std::istream& strm);
 
 private:
 	typedef std::map<std::string, std::function<void(std::vector<std::string> const& shapeParametrs)>> ActionMap;

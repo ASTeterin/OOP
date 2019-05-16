@@ -21,7 +21,7 @@ CShapeProcessor::CShapeProcessor(istream& input, ostream& output)
 {
 }
 
-vector<string> CShapeProcessor::ReadShape(istream& strm)
+vector<string> CShapeProcessor::ParseShapeParameterString(istream& strm)
 {
 	vector<string> shapeParametrs;
 	string parametr;
@@ -44,8 +44,8 @@ void CShapeProcessor::HandleCommand()
 		return;
 	}
 	istringstream strm(commandLine);
-	params = ReadShape(strm);
-	auto it = m_actionMap.find(params[0]); //
+	params = ParseShapeParameterString(strm);
+	auto it = m_actionMap.find(params.at(0)); //
 	if (it != m_actionMap.end())
 	{
 		it->second(params);
@@ -148,16 +148,10 @@ void CShapeProcessor::PrintShapeWithMaxArea() const
 	{
 		return;
 	}
-	double maxArea = (*m_shapesList[0]).GetArea();
-	shared_ptr<IShape>  shapeWithMaxArea = m_shapesList[0];
-	for (const auto shape : m_shapesList)
-	{
-		if ((*shape).GetArea() > maxArea)
-		{
-			shapeWithMaxArea = shape;
-		}
-	}
-	m_output << "Shape with max area\n" << (*shapeWithMaxArea).ToString() << "\n";
+	auto shapeWithMaxArea = max_element(m_shapesList.begin(), m_shapesList.end(), [](const auto& arg1, const auto& arg2) {
+		return arg1->GetArea() < arg2->GetArea();
+	});
+	m_output << "Shape with max area\n" << (*shapeWithMaxArea)->ToString() << "\n";
 }
 
 void CShapeProcessor::PrintShapeWithMinPerimeter() const
@@ -166,15 +160,9 @@ void CShapeProcessor::PrintShapeWithMinPerimeter() const
 	{
 		return;
 	}
-	double minPerimeter = (*m_shapesList[0]).GetPerimeter();
-	shared_ptr<IShape> shapeWithMinPerimeter = m_shapesList[0];
-	for (const auto shape : m_shapesList)
-	{
-		if ((*shape).GetArea() > minPerimeter)
-		{
-			shapeWithMinPerimeter = shape;
-		}
-	}
+	auto shapeWithMinPerimeter = std::min_element(m_shapesList.cbegin(), m_shapesList.cend(), [](const auto& arg1, const auto& arg2) {
+		return arg1->GetPerimeter() < arg2->GetPerimeter();
+	});
 	m_output << "Shape with min perimeter\n"
-			 << (*shapeWithMinPerimeter).ToString() << "\n";
+			 << (*shapeWithMinPerimeter)->ToString() << "\n";
 }

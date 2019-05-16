@@ -4,9 +4,9 @@
 using namespace std;
 
 CRectangle::CRectangle(CPoint const& leftTop, CPoint const& rightBottom, uint32_t outlineColor, uint32_t fillColor)
-	: m_leftTop(leftTop)
+	: CSolidShape("Rectangle", outlineColor, fillColor)
+	, m_leftTop(leftTop)
 	, m_rightBottom(rightBottom)
-	, CSolidShape("Rectangle", outlineColor, fillColor)
 
 {
 }
