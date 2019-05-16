@@ -6,6 +6,9 @@
 using namespace std;
 
 CVector3D::CVector3D()
+	: x(0)
+	, y(0)
+	, z(0)
 {
 }
 
