@@ -31,6 +31,9 @@ public:
 	CVector3D& operator*=(double scalar);
 	CVector3D& operator /=(double scalar);
 
+	bool operator ==(CVector3D const& operand2) const;
+	bool operator !=(CVector3D const& operand2) const;
+
 
 
 

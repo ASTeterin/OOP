@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CVector3D.h"
 #include <math.h>
+#include "math_function.h"
+
 
 using namespace std;
 
@@ -100,6 +102,16 @@ CVector3D& CVector3D::operator /=(double scalar)
 	z /= scalar;
 
 	return *this;
+}
+
+bool CVector3D::operator ==(CVector3D const& operand2) const
+{
+	return (IsEqual(x, operand2.x) && IsEqual(y, operand2.y) && IsEqual(z, operand2.z));
+}
+
+bool CVector3D::operator !=(CVector3D const& operand2) const
+{
+	return (!IsEqual(x, operand2.x) || !IsEqual(y, operand2.y) || !IsEqual(z, operand2.z));
 }
 
 
