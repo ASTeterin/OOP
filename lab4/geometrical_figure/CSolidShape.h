@@ -20,9 +20,9 @@ public:
 	std::uint32_t GetOutlineColor() const final;
 
 	std::string ToString() const;
-	void AppendProperty(std::ostream& strm) const override;
 
 private:
+	void AppendProperty(std::ostream& strm) const override;
 	std::string m_type;
 	uint32_t m_outlineColor;
 	uint32_t m_fillColor;
