@@ -9,8 +9,6 @@ public:
 	// Конструирует вектор с заданными координатами
 	CVector3D(double x0, double y0, double z0);
 
-	~CVector3D();
-
 	// Возвращает длину вектора
 	double GetLength() const;
 

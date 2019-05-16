@@ -19,9 +19,6 @@ CVector3D::CVector3D(double x0, double y0, double z0)
 {
 }
 
-CVector3D::~CVector3D()
-{
-}
 
 double CVector3D::GetLength() const
 {
