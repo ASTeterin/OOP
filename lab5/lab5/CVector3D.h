@@ -1,4 +1,5 @@
 #pragma once
+#include "pch.h"
 class CVector3D
 {
 public:
@@ -36,14 +37,14 @@ public:
 
 
 
-
 	// ƒругие методы и операции класса
 
 	// ¬ данном случае данные можно сделать публичными
 	double x, y, z;
 };
 
-CVector3D const operator*(double scalar, CVector3D const& vector);
+CVector3D const operator *(double scalar, CVector3D const& vector);
 double DotProduct(CVector3D const& v1, CVector3D const& v2);
 CVector3D CrossProduct(CVector3D const& v1, CVector3D const& v2);
+std::ostream& operator <<(std::ostream& strm, CVector3D const& vector);
 
