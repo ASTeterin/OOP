@@ -47,4 +47,5 @@ CVector3D const operator *(double scalar, CVector3D const& vector);
 double DotProduct(CVector3D const& v1, CVector3D const& v2);
 CVector3D CrossProduct(CVector3D const& v1, CVector3D const& v2);
 std::ostream& operator <<(std::ostream& strm, CVector3D const& vector);
+std::istream& operator >>(std::istream& strm, CVector3D& vector);
 

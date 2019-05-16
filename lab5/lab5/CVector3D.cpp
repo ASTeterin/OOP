@@ -141,3 +141,17 @@ std::ostream& operator<<(std::ostream& strm, CVector3D const& vector)
 	strm << vector.x << " " << vector.y << " " << vector.z << "\n";
 	return strm;
 }
+
+std::istream& operator>>(std::istream& strm, CVector3D& vector)
+{
+	double x, y, z;
+	if ((strm >> x) && (strm >> y) && (strm >> z))
+	{
+		vector = CVector3D(x, y, z);
+	}
+	else
+	{
+		strm.setstate(std::ios_base::failbit | strm.rdstate());
+	}
+	return strm;
+}
