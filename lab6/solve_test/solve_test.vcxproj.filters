@@ -18,7 +18,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="equation.h">
+    <ClInclude Include="..\solve\equation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,10 +26,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="solve.cpp">
+    <ClCompile Include="solve_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="equation.cpp">
+    <ClCompile Include="catch_sample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\solve\equation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
