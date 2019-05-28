@@ -1,5 +1,10 @@
 #pragma once
 #include <vector>
 
+struct EquationRoots
+{
+	int numRoots;
+	double roots[2];
+};
 
-std::vector<double> Solve2(double a, double b, double c);
+EquationRoots Solve2(double a, double b, double c);
