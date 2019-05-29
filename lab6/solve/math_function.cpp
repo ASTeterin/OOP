@@ -5,7 +5,7 @@
 
 bool IsEqual(double x, double y)
 {
-	return std::fabs(x - y) < pow(10, -6); //DBL_EPSILON; //pow(10, -6);
+	return std::fabs(x - y) < pow(10, -6); 
 }
 
 int Sign(double value)

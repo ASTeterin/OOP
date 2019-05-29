@@ -50,7 +50,7 @@ EquationRoots3 Solve3(double coeficientA, double coeficientB, double coeficientC
 		root.numRoots = 3;
 		root.roots[0] = -2 * sqrt(q) * cos(t) - a / 3;
 		root.roots[1] = -2 * sqrt(q) * cos(t + 2 * M_PI / 3) - a / 3;
-		root.roots[1] = -2 * sqrt(q) * cos(t - 2 * M_PI / 3) - a / 3;
+		root.roots[2] = -2 * sqrt(q) * cos(t - 2 * M_PI / 3) - a / 3;
 	}
 	else if (s < 0)
 	{
