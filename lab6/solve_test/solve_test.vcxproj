@@ -168,10 +168,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\solve\equation.h" />
+    <ClInclude Include="..\solve\math_function.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\solve\equation.cpp" />
+    <ClCompile Include="..\solve\math_function.cpp" />
     <ClCompile Include="catch_sample.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -21,6 +21,9 @@
     <ClInclude Include="equation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="math_function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="equation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math_function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
