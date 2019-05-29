@@ -35,6 +35,10 @@ EquationRoots Solve2(double a, double b, double c)
 
 EquationRoots3 Solve3(double coeficientA, double coeficientB, double coeficientC, double coeficientD)
 {
+	if (coeficientA == 0)
+	{
+		throw invalid_argument("Coefficient a cannot be equal to 0");
+	}
 	double a = coeficientB / coeficientA;
 	double b = coeficientC / coeficientA;
 	double c = coeficientD / coeficientA;
