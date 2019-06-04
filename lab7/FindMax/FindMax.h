@@ -11,7 +11,7 @@ bool FindMax(std::vector<T> const& arr, T& maxValue)
 
 	for (auto currentElement : arr)
 	{
-		if (maxElement > currentElement)
+		if (maxElement < currentElement)
 		{
 			maxElement = currentElement;
 		}
