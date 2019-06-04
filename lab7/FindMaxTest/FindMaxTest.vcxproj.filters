@@ -18,7 +18,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FindMax.h">
+    <ClInclude Include="..\FindMax\FindMax.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -26,7 +26,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FindMax.cpp">
+    <ClCompile Include="FindMaxTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="catch_sample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
