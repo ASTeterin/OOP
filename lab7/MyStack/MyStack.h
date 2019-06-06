@@ -15,13 +15,18 @@ public:
 
 	void Push(T const& data)
 	{
-
-		Node* newNode = new Node;
-		newNode->data = data;
-		newNode->next = nullptr;
-		newNode->next = m_pTop;
-		m_pTop = newNode;
-		//throw std::bad_alloc("Out of memory");
+		try
+		{
+			Node* newNode = new Node;
+			newNode->data = data;
+			newNode->next = m_pTop;
+			m_pTop = newNode;
+		}
+		catch(...)
+		{
+			throw;
+		}
+		
 	}
 
 	bool IsEmpty() const
@@ -33,12 +38,12 @@ public:
 	{
 		if (!IsEmpty())
 		{
-			m_pTop = m_pTop.next;	
+			m_pTop = m_pTop->next;
 		}
 		else
 		{
 			throw std::logic_error("Stack is empty");
-		}	
+		}
 	}
 
 	T GetTop()
@@ -50,10 +55,8 @@ public:
 		else
 		{
 			throw std::logic_error("Stack is empty");
-		}		
+		}
 	}
-
-	
 
 private:
 	Node* m_pTop = nullptr;
