@@ -17,15 +17,15 @@ public:
 	{
 		try 
 		{
-			node* newNode = new Node;
+			Node* newNode = new Node;
 			newNode.data = data;
 			newNode.next = nullptr;
 			m_pTop.next = newNode;
 			m_pTop = newNode;
 		}
-		catch
+		catch (std::bad_alloc const& e)
 		{
-			throw bad_alloc("");
+			throw std::bad_alloc("Out of memory");
 		}	
 	}
 
@@ -42,7 +42,7 @@ public:
 		}
 		else
 		{
-			throw logic_error("Stack is empty");
+			throw std::logic_error("Stack is empty");
 		}	
 	}
 
@@ -54,7 +54,7 @@ public:
 		}
 		else
 		{
-			throw logic_error("Stack is empty");
+			throw std::logic_error("Stack is empty");
 		}		
 	}
 
