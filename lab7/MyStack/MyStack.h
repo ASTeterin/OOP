@@ -12,6 +12,10 @@ class CMyStack
 
 public:
 	CMyStack() = default;
+	/*~CMyStack()
+	{
+		Clear();
+	}*/
 
 	void Push(T const& data)
 	{
@@ -22,11 +26,10 @@ public:
 			newNode->next = m_pTop;
 			m_pTop = newNode;
 		}
-		catch(...)
+		catch (...)
 		{
 			throw;
 		}
-		
 	}
 
 	bool IsEmpty() const
@@ -39,6 +42,23 @@ public:
 		if (!IsEmpty())
 		{
 			m_pTop = m_pTop->next;
+		}
+		else
+		{
+			throw std::logic_error("Stack is empty");
+		}
+	}
+
+	void Clear()
+	{
+		if (!IsEmpty())
+		{
+			while (m_pTop)
+			{
+				Node* currNode = m_pTop;
+				m_pTop = currNode->next;
+				delete currNode;
+			}
 		}
 		else
 		{
