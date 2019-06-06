@@ -15,18 +15,13 @@ public:
 
 	void Push(T const& data)
 	{
-		try 
-		{
-			Node* newNode = new Node;
-			newNode.data = data;
-			newNode.next = nullptr;
-			m_pTop.next = newNode;
-			m_pTop = newNode;
-		}
-		catch (std::bad_alloc const& e)
-		{
-			throw std::bad_alloc("Out of memory");
-		}	
+
+		Node* newNode = new Node;
+		newNode->data = data;
+		newNode->next = nullptr;
+		newNode->next = m_pTop;
+		m_pTop = newNode;
+		//throw std::bad_alloc("Out of memory");
 	}
 
 	bool IsEmpty() const
@@ -50,7 +45,7 @@ public:
 	{
 		if (!IsEmpty())
 		{
-			return m_pTop.data;
+			return m_pTop->data;
 		}
 		else
 		{
@@ -61,5 +56,5 @@ public:
 	
 
 private:
-	T* m_pTop = nullptr;
+	Node* m_pTop = nullptr;
 };
