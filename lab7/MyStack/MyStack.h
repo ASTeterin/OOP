@@ -43,8 +43,19 @@ public:
 		else
 		{
 			throw logic_error("Stack is empty");
+		}	
+	}
+
+	T GetTop()
+	{
+		if (!IsEmpty())
+		{
+			return m_pTop.data;
 		}
-		
+		else
+		{
+			throw logic_error("Stack is empty");
+		}		
 	}
 
 	
