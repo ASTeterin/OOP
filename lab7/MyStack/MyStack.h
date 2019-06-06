@@ -10,14 +10,13 @@ class CMyStack
 		Node* next;
 	};
 
+private:
+
+
 public:
 	CMyStack() = default;
-	/*~CMyStack()
-	{
-		Clear();
-	}*/
 
-	CMyStack(const CMyStack& other)
+	CMyStack(CMyStack const& other)
 		: CMyStack()
 	{
 		try
@@ -42,6 +41,35 @@ public:
 		}
 	}
 
+	/*CMyStack<T> &CMyStack<T>::operator=(const CMyStack other)
+	{
+
+
+		this->Clear();
+		try
+		{
+			CMyStack tempStack;
+			Node* currentNode = other.m_pTop;
+			while (currentNode->next)
+			{
+				tempStack.Push(currentNode->data);
+				currentNode = currentNode->next;
+			}
+			while (!tempStack.IsEmpty())
+			{
+				Push(tempStack.GetTop());
+				tempStack.Pop();
+			}
+		}
+		catch (...)
+		{
+			Clear();
+			throw;
+		}
+
+
+	}
+	*/
 	void Push(T const& data)
 	{
 		try
