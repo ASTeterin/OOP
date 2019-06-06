@@ -17,6 +17,31 @@ public:
 		Clear();
 	}*/
 
+	CMyStack(const CMyStack& other)
+		: CMyStack()
+	{
+		try
+		{
+			CMyStack tempStack;
+			Node* currentNode = other.m_pTop;
+			while (currentNode->next)
+			{
+				tempStack.Push(currentNode->data);
+				currentNode = currentNode->next;
+			}
+			while (!tempStack.IsEmpty())
+			{
+				Push(tempStack.GetTop());
+				tempStack.Pop();
+			}
+		}
+		catch (...)
+		{
+			Clear();
+			throw;
+		}
+	}
+
 	void Push(T const& data)
 	{
 		try
