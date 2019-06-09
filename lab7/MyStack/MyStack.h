@@ -11,27 +11,30 @@ class CMyStack
 	};
 
 private:
-
-
 public:
 	CMyStack() = default;
+	
+	~CMyStack()
+	{
+		Clear();
+	}
 
 	CMyStack(CMyStack const& other)
 		: CMyStack()
 	{
 		try
 		{
-			CMyStack tempStack;
-			Node* currentNode = other.m_pTop;
-			while (currentNode->next)
+			//this->Push(other.GetTop());
+			Node* srcCurrentNode = other.m_pTop;
+			Node* dstCurrentNode = this->m_pTop;
+		
+			while (srcCurrentNode)
 			{
-				tempStack.Push(currentNode->data);
-				currentNode = currentNode->next;
-			}
-			while (!tempStack.IsEmpty())
-			{
-				Push(tempStack.GetTop());
-				tempStack.Pop();
+				Node* tmp = new Node;
+				tmp->data = srcCurrentNode->data;
+				srcCurrentNode = srcCurrentNode->next;
+				dstCurrentNode = tmp;
+		
 			}
 		}
 		catch (...)
@@ -39,6 +42,12 @@ public:
 			Clear();
 			throw;
 		}
+	}
+
+	CMyStack(CMyStack&& other)
+		: CMyStack()
+	{
+		swap(this->m_pTop, other.m_pTop);
 	}
 
 	/*CMyStack<T> &CMyStack<T>::operator=(const CMyStack other)
@@ -94,7 +103,15 @@ public:
 	{
 		if (!IsEmpty())
 		{
-			m_pTop = m_pTop->next;
+			Node* tmp = m_pTop;
+			try
+			{	
+				m_pTop = m_pTop->next;
+			}
+			catch (...)
+			{
+				delete tmp;
+			}
 		}
 		else
 		{
@@ -113,13 +130,9 @@ public:
 				delete currNode;
 			}
 		}
-		else
-		{
-			throw std::logic_error("Stack is empty");
-		}
 	}
 
-	T GetTop()
+	T GetTop() const
 	{
 		if (!IsEmpty())
 		{
