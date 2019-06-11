@@ -13,7 +13,7 @@ class CMyStack
 private:
 public:
 	CMyStack() = default;
-	
+
 	~CMyStack()
 	{
 		Clear();
@@ -24,17 +24,20 @@ public:
 	{
 		try
 		{
-			//this->Push(other.GetTop());
 			Node* srcCurrentNode = other.m_pTop;
 			Node* dstCurrentNode = this->m_pTop;
-		
 			while (srcCurrentNode)
 			{
-				Node* tmp = new Node;
-				tmp->data = srcCurrentNode->data;
+				dstCurrentNode = new Node;
+				dstCurrentNode->data = srcCurrentNode->data;
+				dstCurrentNode->next = nullptr;
+				
+				if (!this->m_pTop)
+				{
+					this->m_pTop = dstCurrentNode;
+				}
+				dstCurrentNode = dstCurrentNode->next;
 				srcCurrentNode = srcCurrentNode->next;
-				dstCurrentNode = tmp;
-		
 			}
 		}
 		catch (...)
@@ -105,7 +108,7 @@ public:
 		{
 			Node* tmp = m_pTop;
 			try
-			{	
+			{
 				m_pTop = m_pTop->next;
 			}
 			catch (...)
