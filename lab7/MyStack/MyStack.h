@@ -28,15 +28,20 @@ public:
 			Node* dstCurrentNode = this->m_pTop;
 			while (srcCurrentNode)
 			{
-				dstCurrentNode = new Node;
-				dstCurrentNode->data = srcCurrentNode->data;
-				dstCurrentNode->next = nullptr;
-				
+				Node* newNode = new Node;
+				newNode->data = srcCurrentNode->data;
+				newNode->next = nullptr;
+
 				if (!this->m_pTop)
 				{
-					this->m_pTop = dstCurrentNode;
+					this->m_pTop = newNode;
 				}
-				dstCurrentNode = dstCurrentNode->next;
+				else
+				{
+					dstCurrentNode->next = newNode;
+				}
+				
+				dstCurrentNode = newNode;
 				srcCurrentNode = srcCurrentNode->next;
 			}
 		}
@@ -64,10 +69,8 @@ public:
 			*this = CMyStack(other);
 		}
 		return *this;
-
-		
 	}
-	
+
 	void Push(T const& data)
 	{
 		try
