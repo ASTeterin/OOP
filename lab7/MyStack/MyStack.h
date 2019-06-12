@@ -53,35 +53,21 @@ public:
 		swap(this->m_pTop, other.m_pTop);
 	}
 
-	/*CMyStack<T> &CMyStack<T>::operator=(const CMyStack other)
+	CMyStack<T> operator=(CMyStack const& other)
 	{
-
-
-		this->Clear();
-		try
+		if (!this == &other)
 		{
-			CMyStack tempStack;
-			Node* currentNode = other.m_pTop;
-			while (currentNode->next)
+			if (m_pTop)
 			{
-				tempStack.Push(currentNode->data);
-				currentNode = currentNode->next;
+				Clear();
 			}
-			while (!tempStack.IsEmpty())
-			{
-				Push(tempStack.GetTop());
-				tempStack.Pop();
-			}
+			*this = CMyStack(other);
 		}
-		catch (...)
-		{
-			Clear();
-			throw;
-		}
+		return *this;
 
-
+		
 	}
-	*/
+	
 	void Push(T const& data)
 	{
 		try
