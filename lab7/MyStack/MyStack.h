@@ -40,7 +40,7 @@ public:
 				{
 					dstCurrentNode->next = newNode;
 				}
-				
+
 				dstCurrentNode = newNode;
 				srcCurrentNode = srcCurrentNode->next;
 			}
@@ -68,6 +68,12 @@ public:
 			}
 			*this = CMyStack(other);
 		}
+		return *this;
+	}
+
+	CMyStack<T> operator=(CMyStack &&other)
+	{
+		std::swap(*this, &other);
 		return *this;
 	}
 
