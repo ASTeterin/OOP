@@ -6,6 +6,11 @@ class CMyStack
 
 	struct Node
 	{
+		Node(T data, Node* next)
+			: data(data)
+			, next(next)
+		{
+		}
 		T data;
 		Node* next;
 	};
@@ -28,9 +33,9 @@ public:
 			Node* dstCurrentNode = this->m_pTop;
 			while (srcCurrentNode)
 			{
-				Node* newNode = new Node;
-				newNode->data = srcCurrentNode->data;
-				newNode->next = nullptr;
+				Node* newNode = new Node(srcCurrentNode->data, nullptr);
+				//newNode->data = srcCurrentNode->data;
+				//newNode->next = nullptr;
 
 				if (!this->m_pTop)
 				{
@@ -71,7 +76,7 @@ public:
 		return *this;
 	}
 
-	CMyStack<T> operator=(CMyStack &&other)
+	CMyStack<T> operator=(CMyStack&& other)
 	{
 		std::swap(*this, &other);
 		return *this;
@@ -81,9 +86,9 @@ public:
 	{
 		try
 		{
-			Node* newNode = new Node;
-			newNode->data = data;
-			newNode->next = m_pTop;
+			Node* newNode = new Node(data, m_pTop);
+			//newNode->data = data;
+			//newNode->next = m_pTop;
 			m_pTop = newNode;
 		}
 		catch (...)
