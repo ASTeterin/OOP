@@ -55,7 +55,7 @@ public:
 	CMyStack(CMyStack&& other)
 		: CMyStack()
 	{
-		swap(this->m_pTop, other.m_pTop);
+		std::swap(this->m_pTop, other.m_pTop);
 	}
 
 	CMyStack<T> operator=(CMyStack const& other)
