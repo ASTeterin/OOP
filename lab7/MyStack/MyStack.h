@@ -119,14 +119,11 @@ public:
 
 	void Clear()
 	{
-		if (!IsEmpty())
+		while (m_pTop)
 		{
-			while (m_pTop)
-			{
-				Node* currNode = m_pTop;
-				m_pTop = currNode->next;
-				delete currNode;
-			}
+			Node* currNode = m_pTop;
+			m_pTop = currNode->next;
+			delete currNode;
 		}
 	}
 
