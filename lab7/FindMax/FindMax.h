@@ -7,16 +7,16 @@ bool FindMax(std::vector<T> const& arr, T& maxValue)
 	{
 		return false;
 	}
-	auto maxElement = arr[0];
+	const T *maxElement = &arr[0];
 
-	for (auto currentElement : arr)
+	for (auto &currentElement : arr)
 	{
-		if (maxElement < currentElement)
+		if (*maxElement < currentElement)
 		{
-			maxElement = currentElement;
+			maxElement = &currentElement;
 		}
 	}
 
-	maxValue = maxElement;
+	maxValue = *maxElement;
 	return true;
 }
