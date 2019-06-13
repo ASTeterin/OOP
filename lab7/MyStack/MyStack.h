@@ -67,7 +67,7 @@ public:
 			CMyStack tmp = CMyStack(other);
 			std::swap(tmp.m_pTop, m_pTop);
 		}
-		return this;
+		return *this;
 	}
 
 	CMyStack<T>& operator=(CMyStack&& other)
@@ -77,7 +77,7 @@ public:
 			Clear();
 			this = &other;
 		}
-		return this;
+		return *this;
 	}
 
 	void Push(T const& data)
