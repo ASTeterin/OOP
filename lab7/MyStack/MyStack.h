@@ -64,12 +64,13 @@ public:
 	{
 		if (this != &other)
 		{
-			this = CMyStack(other);
+			CMyStack tmp = CMyStack(other);
+			std::swap(tmp.m_pTop, m_pTop);
 		}
 		return this;
 	}
 
-	CMyStack<T> &operator=(CMyStack&& other)
+	CMyStack<T>& operator=(CMyStack&& other)
 	{
 		if (this != &other)
 		{
