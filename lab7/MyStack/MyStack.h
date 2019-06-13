@@ -54,11 +54,11 @@ public:
 		}
 	}
 
-	CMyStack(CMyStack&& other)
+	CMyStack(CMyStack&& other) noexcept
 		: CMyStack()
 	{
 		std::swap(this->m_pTop, other.m_pTop);
-	}
+	} 
 
 	CMyStack<T>& operator=(CMyStack const& other)
 	{
@@ -70,15 +70,15 @@ public:
 		return *this;
 	}
 
-	CMyStack<T>& operator=(CMyStack&& other)
+	CMyStack<T>& operator=(CMyStack&& other) noexcept
 	{
 		if (this != &other)
 		{
 			Clear();
-			this = &other;
+			this->m_pTop = other.m_pTop;
 		}
 		return *this;
-	}
+	} 
 
 	void Push(T const& data)
 	{
@@ -86,10 +86,10 @@ public:
 		m_pTop = newNode;	
 	}
 
-	bool IsEmpty() const
+	bool IsEmpty() const noexcept
 	{
 		return !m_pTop;
-	}
+	} 
 
 	void Pop()
 	{
@@ -105,7 +105,7 @@ public:
 		}
 	}
 
-	void Clear()
+	void Clear() noexcept
 	{
 		while (m_pTop)
 		{
