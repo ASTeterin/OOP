@@ -34,9 +34,6 @@ public:
 			while (srcCurrentNode)
 			{
 				Node* newNode = new Node(srcCurrentNode->data, nullptr);
-				//newNode->data = srcCurrentNode->data;
-				//newNode->next = nullptr;
-
 				if (!this->m_pTop)
 				{
 					this->m_pTop = newNode;
@@ -65,7 +62,7 @@ public:
 
 	CMyStack<T> operator=(CMyStack const& other)
 	{
-		if (!this == &other)
+		if (this != &other)
 		{
 			if (m_pTop)
 			{
@@ -87,8 +84,6 @@ public:
 		try
 		{
 			Node* newNode = new Node(data, m_pTop);
-			//newNode->data = data;
-			//newNode->next = m_pTop;
 			m_pTop = newNode;
 		}
 		catch (...)
