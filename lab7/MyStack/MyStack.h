@@ -7,7 +7,7 @@ class CMyStack
 	struct Node
 	{
 		Node(T data, Node* next)
-			: data(data)
+			: data(std::move(data))
 			, next(next)
 		{
 		}
@@ -60,36 +60,29 @@ public:
 		std::swap(this->m_pTop, other.m_pTop);
 	}
 
-	CMyStack<T> operator=(CMyStack const& other)
+	CMyStack<T>& operator=(CMyStack const& other)
 	{
 		if (this != &other)
 		{
-			if (m_pTop)
-			{
-				Clear();
-			}
-			*this = CMyStack(other);
+			this = CMyStack(other);
 		}
-		return *this;
+		return this;
 	}
 
-	CMyStack<T> operator=(CMyStack&& other)
+	CMyStack<T> &operator=(CMyStack&& other)
 	{
-		std::swap(*this, &other);
-		return *this;
+		if (this != &other)
+		{
+			Clear();
+			this = &other;
+		}
+		return this;
 	}
 
 	void Push(T const& data)
 	{
-		try
-		{
-			Node* newNode = new Node(data, m_pTop);
-			m_pTop = newNode;
-		}
-		catch (...)
-		{
-			throw;
-		}
+		Node* newNode = new Node(data, m_pTop);
+		m_pTop = newNode;	
 	}
 
 	bool IsEmpty() const
@@ -102,14 +95,8 @@ public:
 		if (!IsEmpty())
 		{
 			Node* tmp = m_pTop;
-			try
-			{
-				m_pTop = m_pTop->next;
-			}
-			catch (...)
-			{
-				delete tmp;
-			}
+			m_pTop = m_pTop->next;
+			delete tmp;
 		}
 		else
 		{
@@ -127,7 +114,7 @@ public:
 		}
 	}
 
-	T GetTop() const
+	const T& GetTop() const
 	{
 		if (!IsEmpty())
 		{
